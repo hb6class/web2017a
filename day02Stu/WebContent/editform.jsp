@@ -58,32 +58,33 @@
 		
 	}
 %>
-				<h1 align="center">상세정보</h1>
+				<h1 align="center">수정페이지</h1>
+				<form action="editresult.jsp">
 				<p align="center">
-					학번:<%=num %>
+					<label>학번</label>
+					<input type="text" name="num" readonly="readonly" value="<%=num%>">
 				</p>
 				<p align="center">
-					이름:<%=name %>
+					<label>이름</label>
+					<input type="text" name="name" value="<%=name%>">
 				</p>
 				<p align="center">
-					국어:<%=kor %>
+					<label>국어</label>
+					<input type="text" name="kor" value="<%=kor%>">
 				</p>
 				<p align="center">
-					영어:<%=eng %>
+					<label>영어</label>
+					<input type="text" name="eng" value="<%=eng%>">
 				</p>
 				<p align="center">
-					수학:<%=math %>
+					<label>수학</label>
+					<input type="text" name="math" value="<%=math%>">
 				</p>
 				<p align="center">
-					합계:<%=kor+eng+math %>
+					<input type="submit" value="수정">
+					<input type="reset" value="취소">
 				</p>
-				<p align="center">
-					평균:<%=(kor+eng+math)*100/3/100.0 %>
-				</p>
-				<p align="center">
-					<a href="editform.jsp?num=<%=num %>">수정</a>
-					<a href="del.jsp?num=<%=num %>">삭제</a>
-				</p>
+				</form>
 			</td>
 		</tr>
 		<!-- 꼬리말 -->

@@ -28,62 +28,41 @@
 		<tr>
 			<td colspan="6">
 <%
-	String sql="select * from stu03 where num=";
-	sql+=request.getParameter("num");
-	String driver ="oracle.jdbc.driver.OracleDriver";
+	String num= request.getParameter("num");
+	String name= request.getParameter("name");
+	String kor= request.getParameter("kor");
+	String eng= request.getParameter("eng");
+	String math= request.getParameter("math");
+	String sql="update stu03 set ";
+	sql+="name='"+name+"',";
+	sql+="kor="+kor+",";
+	sql+="eng="+eng+",";
+	sql+="math="+math+" where num="+num;
+	System.out.println(sql);
+	String driver="oracle.jdbc.driver.OracleDriver";
 	String url="jdbc:oracle:thin:@localhost:1521:xe";
 	String user="scott";
 	String password="tiger";
 	Connection conn=null;
 	Statement stmt=null;
-	ResultSet rs=null;
-	int num,kor,eng,math;
-	num=0; kor=0; eng=0; math=0;
-	String name=null;
+	int result=0;
 	try{
 		Class.forName(driver);
-		conn=DriverManager.getConnection(url, user, password);
+		conn=DriverManager.getConnection(url,user,password);
 		stmt=conn.createStatement();
-		rs=stmt.executeQuery(sql);
-		if(rs.next()){
-			num=rs.getInt("num");
-			name=rs.getString("name");
-			kor=rs.getInt("kor");
-			eng=rs.getInt("eng");
-			math=rs.getInt("math");
-		}
+		result=stmt.executeUpdate(sql);
 	}catch(Exception e){
-		e.printStackTrace();
-	}finally{
 		
+	}finally{
+		if(stmt!=null)stmt.close();
+		if(conn!=null)conn.close();
 	}
 %>
-				<h1 align="center">상세정보</h1>
-				<p align="center">
-					학번:<%=num %>
-				</p>
-				<p align="center">
-					이름:<%=name %>
-				</p>
-				<p align="center">
-					국어:<%=kor %>
-				</p>
-				<p align="center">
-					영어:<%=eng %>
-				</p>
-				<p align="center">
-					수학:<%=math %>
-				</p>
-				<p align="center">
-					합계:<%=kor+eng+math %>
-				</p>
-				<p align="center">
-					평균:<%=(kor+eng+math)*100/3/100.0 %>
-				</p>
-				<p align="center">
-					<a href="editform.jsp?num=<%=num %>">수정</a>
-					<a href="del.jsp?num=<%=num %>">삭제</a>
-				</p>
+				<%if(result>0){ %>
+				<h1>수정 성공</h1>
+				<%}else{ %>
+				<h1>수정 실패</h1>
+				<%} %>
 			</td>
 		</tr>
 		<!-- 꼬리말 -->
@@ -96,7 +75,5 @@ Copyright (c) 2015 한빛교육센터 All rights reserved.
 			</td>
 		</tr>
 	</table>
-</body>
-</html>
 </body>
 </html>
