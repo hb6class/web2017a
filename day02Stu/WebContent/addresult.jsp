@@ -20,7 +20,7 @@
 			<td>&nbsp;&nbsp;&nbsp;</td>
 			<td width="150" bgcolor="#aaaaff"><a href="index.jsp">home</a></td>
 			<td width="150" bgcolor="#aaaaff"><a href="add.jsp">입력</a></td>
-			<td width="150" bgcolor="#aaaaff">보기</td>
+			<td width="150" bgcolor="#aaaaff"><a href="viewall.jsp">보기</a></td>
 			<td width="150" bgcolor="#aaaaff">방명록</td>
 			<td>&nbsp;&nbsp;&nbsp;</td>
 		</tr>

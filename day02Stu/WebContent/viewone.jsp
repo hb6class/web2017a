@@ -1,3 +1,4 @@
+<%@ page import="java.sql.*" %>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,30 +27,63 @@
 		<!-- 내용 -->
 		<tr>
 			<td colspan="6">
-				<h1 align="center">입력페이지</h1>
-				<form action="addresult.jsp">
+<%
+	String sql="select * from stu03 where num=";
+	sql+=request.getParameter("num");
+	String driver ="oracle.jdbc.driver.OracleDriver";
+	String url="jdbc:oracle:thin:@localhost:1521:xe";
+	String user="scott";
+	String password="tiger";
+	Connection conn=null;
+	Statement stmt=null;
+	ResultSet rs=null;
+	int num,kor,eng,math;
+	num=0; kor=0; eng=0; math=0;
+	String name=null;
+	try{
+		Class.forName(driver);
+		conn=DriverManager.getConnection(url, user, password);
+		stmt=conn.createStatement();
+		rs=stmt.executeQuery(sql);
+		if(rs.next()){
+			num=rs.getInt("num");
+			name=rs.getString("name");
+			kor=rs.getInt("kor");
+			eng=rs.getInt("eng");
+			math=rs.getInt("math");
+		}
+	}catch(Exception e){
+		e.printStackTrace();
+	}finally{
+		
+	}
+%>
+				<h1 align="center">상세정보</h1>
 				<p align="center">
-					<label>이름</label>
-					<input type="text" name="name">
+					학번:<%=num %>
 				</p>
 				<p align="center">
-					<label>국어</label>
-					<input type="text" name="kor">
+					이름:<%=name %>
 				</p>
 				<p align="center">
-					<label>영어</label>
-					<input type="text" name="eng">
+					국어:<%=kor %>
 				</p>
 				<p align="center">
-					<label>수학</label>
-					<input type="text" name="math">
+					영어:<%=eng %>
 				</p>
 				<p align="center">
-					<input type="submit" value="입력">
-					<input type="reset" value="취소">
+					수학:<%=math %>
 				</p>
-				</form>
-			
+				<p align="center">
+					합계:<%=kor+eng+math %>
+				</p>
+				<p align="center">
+					평균:<%=(kor+eng+math)*100/3/100.0 %>
+				</p>
+				<p align="center">
+					<a href="editform.jsp">수정</a>
+					<a href="del.jsp">삭제</a>
+				</p>
 			</td>
 		</tr>
 		<!-- 꼬리말 -->
@@ -62,5 +96,7 @@ Copyright (c) 2015 한빛교육센터 All rights reserved.
 			</td>
 		</tr>
 	</table>
+</body>
+</html>
 </body>
 </html>

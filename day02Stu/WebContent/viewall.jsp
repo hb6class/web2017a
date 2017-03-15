@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
+<%@ page import="java.sql.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,30 +27,46 @@
 		<!-- 내용 -->
 		<tr>
 			<td colspan="6">
-				<h1 align="center">입력페이지</h1>
-				<form action="addresult.jsp">
-				<p align="center">
-					<label>이름</label>
-					<input type="text" name="name">
-				</p>
-				<p align="center">
-					<label>국어</label>
-					<input type="text" name="kor">
-				</p>
-				<p align="center">
-					<label>영어</label>
-					<input type="text" name="eng">
-				</p>
-				<p align="center">
-					<label>수학</label>
-					<input type="text" name="math">
-				</p>
-				<p align="center">
-					<input type="submit" value="입력">
-					<input type="reset" value="취소">
-				</p>
-				</form>
-			
+<%
+	String sql="select num,name,kor+eng+math as tot from stu03 order by num";
+	String driver="oracle.jdbc.driver.OracleDriver";
+	String url="jdbc:oracle:thin:@localhost:1521:xe";
+	String user="scott";
+	String password="tiger";
+	Connection conn=null;
+	Statement stmt=null;
+	ResultSet rs=null;
+	try{
+		Class.forName(driver);
+		conn=DriverManager.getConnection(url, user, password);
+		stmt=conn.createStatement();
+		rs=stmt.executeQuery(sql);
+%>			
+				<table width="500" cellspacing="0" border="1" align="center">
+					<caption>학생리스트</caption>
+					<tr>
+						<td>학번</td>
+						<td>이름</td>
+						<td>합계</td>
+					</tr>
+					<%while(rs.next()){ %>
+					<tr>
+						<td><%=rs.getInt("num") %></td>
+						<td><%=rs.getString("name") %></td>
+						<td>
+							<a href="viewone.jsp?num=<%=rs.getInt("num") %>"><%=rs.getInt("tot") %></a>
+						</td>
+					</tr>
+					<%} %>
+				</table>
+<% 
+}catch(Exception e){
+	out.println("<h1>잠시 네트워크가 불안정한 상태입니다</h1>");
+	out.println("<h1>잠시 후 제접속 해주세요</h1>");
+}finally{
+	
+} 
+%>			
 			</td>
 		</tr>
 		<!-- 꼬리말 -->
@@ -62,5 +79,7 @@ Copyright (c) 2015 한빛교육센터 All rights reserved.
 			</td>
 		</tr>
 	</table>
+</body>
+</html>
 </body>
 </html>
