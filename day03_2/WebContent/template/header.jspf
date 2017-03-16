@@ -8,6 +8,7 @@ String user="scott";
 String password="tiger";
 Connection conn=null;
 Statement stmt=null;
+PreparedStatement pstmt=null;
 ResultSet rs=null;
 %>
 	<table width="100%">

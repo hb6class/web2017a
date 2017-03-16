@@ -31,7 +31,7 @@
 	%>
 		<tr>
 			<td><%=rs.getInt("idx") %></td>
-			<td><%=rs.getString("subj") %></td>
+			<td><a href="detail.jsp?idx=<%=rs.getInt("idx") %>"><%=rs.getString("subj") %></a></td>
 			<td><%=rs.getString("wid") %></td>
 			<td><%=rs.getInt("cnt") %></td>
 		</tr>
