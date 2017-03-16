@@ -79,6 +79,7 @@
 						<th>이름</th>
 						<th>날짜</th>
 						<th>금액</th>
+						<th width="200">수정/삭제</th>
 					</tr>
 					<%
 					for(int i=0; i<list.size(); i++) {
@@ -89,10 +90,18 @@
 						<td><%=record[1] %></td>
 						<td><%=record[2] %></td>
 						<td><%=record[3] %></td>
+						<td>
+							<form action="edit.jsp">
+							<input type="hidden" name="sabun" value="<%=record[0] %>">
+							<input type="radio" name="edit" value="0" checked="checked">금액수정
+							<input type="radio" name="edit" value="1">삭제
+							<input type="submit" value="이동">	
+							</form>
+						</td>
 					</tr>
 					<%} %>
 					<tr bgcolor="#cccccc">
-						<td align="right" colspan="4">
+						<td align="right" colspan="5">
 							<a href="add.jsp">신규등록</a>
 						</td>
 					</tr>
