@@ -27,12 +27,15 @@
 		%>
 		<tr>
 			<td><%=map.get("idx") %></td>
-			<td><%=map.get("sub") %></td>
+			<td><a href="detail.jsp?idx=<%=map.get("idx") %>"><%=map.get("sub") %></a></td>
 			<td><%=map.get("wid") %></td>
 			<td><%=map.get("cnt") %></td>
 		</tr>
 		<%} %>
 	</table>
+	<p align="center">
+		<a href="add.jsp">±Û¾²±â</a>
+	</p>
 <%@ include file="../template/footer.jspf" %>
 </body>
 </html>
