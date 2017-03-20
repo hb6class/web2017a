@@ -16,6 +16,42 @@ public class Guest01Dao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
+	public ArrayList<Guest01Bean> selectAll(int page){
+		ArrayList<Guest01Bean> list = new ArrayList<Guest01Bean>();
+		int pStart=(page-1)*10+1;
+		int pEnd=pStart+9;
+		String sql="select * from ";
+		sql+="(select rownum as rn, A.sabun, A.name, A.nalja, A.pay from ";
+		sql+="(select * from guest01 order by sabun desc)A )B ";
+		sql+="where B.rn>="+pStart+" and B.rn<="+pEnd;
+		
+		conn=OraDb.getConnection();
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			while(rs.next()){
+				Guest01Bean bean = new Guest01Bean();
+				bean.setSabun(rs.getInt("sabun"));
+				bean.setName(rs.getString("name"));
+				bean.setNalja(rs.getDate("nalja"));
+				bean.setPay(rs.getInt("pay"));
+				list.add(bean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)rs.close();
+				if(stmt!=null)stmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return list;
+	}
 	public ArrayList<Guest01Bean> selectAll(String keyword,String search){
 		ArrayList<Guest01Bean> list = new ArrayList<Guest01Bean>();
 		search = search.trim();
