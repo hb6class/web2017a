@@ -44,7 +44,8 @@ public class Guest01Dao {
 		return list;
 	}
 	
-	public void insertOne(String name,int pay){
+	public int insertOne(String name,int pay){
+		int result=0;
 		String sql="insert into guest01 values";
 		sql+=" (guest01_seq.nextval,?,sysdate,?)";
 		Connection conn=OraDb.getConnection();
@@ -53,7 +54,7 @@ public class Guest01Dao {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, name);
 			pstmt.setInt(2, pay);
-			pstmt.executeUpdate();
+			result=pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -64,6 +65,7 @@ public class Guest01Dao {
 				e.printStackTrace();
 			}
 		}
+		return result;
 	}
 	
 }
