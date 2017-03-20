@@ -11,13 +11,15 @@ import com.hb.dto.Guest01Bean;
 import com.hb.util.OraDb;
 
 public class Guest01Dao {
+	private Connection conn;
+	private Statement stmt;
+	private PreparedStatement pstmt;
+	private ResultSet rs;
 
 	public ArrayList<Guest01Bean> selectAll(){
 		String sql="select * from guest01";
 		ArrayList<Guest01Bean> list= new ArrayList<Guest01Bean>();
-		Connection conn=OraDb.getConnection();
-		Statement stmt =null;
-		ResultSet rs=null;
+		conn=OraDb.getConnection();
 		try {
 			stmt = conn.createStatement();
 			rs=stmt.executeQuery(sql);
@@ -48,8 +50,7 @@ public class Guest01Dao {
 		int result=0;
 		String sql="insert into guest01 values";
 		sql+=" (guest01_seq.nextval,?,sysdate,?)";
-		Connection conn=OraDb.getConnection();
-		PreparedStatement pstmt=null;
+		conn=OraDb.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, name);
@@ -68,6 +69,36 @@ public class Guest01Dao {
 		return result;
 	}
 	
+	public Guest01Bean selectOne(int sabun){
+		Guest01Bean bean = new Guest01Bean();
+		String sql="select * from guest01 where sabun=?";
+		conn=OraDb.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				bean.setSabun(rs.getInt("sabun"));
+				bean.setName(rs.getString("name"));
+				bean.setNalja(rs.getDate("nalja"));
+				bean.setPay(rs.getInt("pay"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+		
+		return bean;
+	}
 }
 
 

@@ -29,7 +29,7 @@
 				Guest01Bean bean=list.get(i);
 		%>
 		<tr>
-			<td><%=bean.getSabun()%></td>
+			<td><a href="detail.jsp?idx=<%=bean.getSabun()%>"><%=bean.getSabun()%></a></td>
 			<td><%=bean.getName() %></td>
 			<td><%=bean.getNalja() %></td>
 			<td><%=bean.getPay() %></td>

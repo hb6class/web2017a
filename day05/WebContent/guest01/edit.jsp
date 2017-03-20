@@ -9,30 +9,35 @@
 <body>
 	<%@ include file="../template/header.jspf" %>
 	<%@ include file="../template/menu.jspf" %>
+	<%request.setCharacterEncoding("euc-kr"); %>
 	<center>
-	<h1>입력 페이지</h1>
-	<form action="insert.jsp" method="get">
-		<table width="50%">
+	<h1>수정페이지</h1>
+	<form action="update.jsp" method="post">
+		<table width="60%" border="1" cellspacing="0">
+			<tr>
+				<td width="30%">사번</td>
+				<td><input type="text" name="sabun" value="<%=request.getParameter("param1")%>" readonly="readonly"></td>
+			</tr>
 			<tr>
 				<td width="30%">이름</td>
-				<td width="70%">
-					<input type="text" name="name">
-				</td>
+				<td><input type="text" name="name" value="<%=request.getParameter("param2")%>"></td>
+			</tr>
+			<tr>
+				<td width="30%">날짜</td>
+				<td><input type="text" name="nalja" value="<%=request.getParameter("param3")%>" disabled="disabled"></td>
 			</tr>
 			<tr>
 				<td width="30%">금액</td>
-				<td width="70%">
-					<input type="text" name="pay">
-				</td>
+				<td><input type="text" name="pay" value="<%=request.getParameter("param4")%>"></td>
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="입력">
+					<input type="submit" value="수정">
 					<input type="reset" value="취소">
 				</td>
 			</tr>
 		</table>
-	</form>	
+	</form>
 	</center>
 	<%@ include file="../template/footer.jspf" %>
 </body>

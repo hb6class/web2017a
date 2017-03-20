@@ -10,7 +10,7 @@
 </head>
 <body>
 	<% 
-		request.setCharacterEncoding("EUC-KR");//한글처리
+		request.setCharacterEncoding("EUC-KR");//post한글처리
 		String name=request.getParameter("name");
 		String st_pay=request.getParameter("pay");
 		
@@ -20,7 +20,6 @@
 		if(st_pay!=null){
 			st_pay=st_pay.trim();
 		}
-		/* 
 		for(int i=0; i<st_pay.length(); i++){
 			char ch=st_pay.charAt(i);
 		//	(int)'0'<=(int)ch<=(int)'9'
@@ -34,6 +33,7 @@
 			}
 		} 
 		
+		/* 
 		int pay=0;
 		try{
 			pay=Integer.parseInt(st_pay);
@@ -42,7 +42,7 @@
 			out.println("alert('금액 입력이 잘못되었습니다');history.back();");
 			out.println("</script>");
 			return;
-		}
+		} 
 		*/
 		int pay=Integer.parseInt(st_pay);
 		Guest01Dao dao = new Guest01Dao();
