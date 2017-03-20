@@ -22,8 +22,25 @@
 			<th>금액</th>
 		</tr>
 		<%
+		String keyword=request.getParameter("keyword");
+		String search =request.getParameter("search");
+		if(keyword==null){
+			keyword="name";			
+		}else if(keyword.equals("key1")){
+			keyword="name";
+		}else if(keyword.equals("key2")){
+			keyword="sabun";
+		}else{
+			keyword="name";						
+		}
+		
 		Guest01Dao dao= new Guest01Dao();
-		ArrayList<Guest01Bean> list=dao.selectAll();
+		ArrayList<Guest01Bean> list=null;
+		if(search==null){
+			list=dao.selectAll();
+		}else{
+			list=dao.selectAll(keyword,search); 
+		}
 		if(list!=null){
 			for(int i=0; i<list.size(); i++){
 				Guest01Bean bean=list.get(i);
@@ -40,6 +57,14 @@
 		%>
 	</table>
 	<p>
+	<form action="list.jsp">
+		<select name="keyword">
+			<option value="key1" selected="selected">이름</option>
+			<option value="key2">사번</option>
+		</select>
+		<input type="text" name="search">
+		<input type="submit" value="검색">
+	</form>
 		<a href="add.jsp">입력</a>
 	</p>
 	</center>	

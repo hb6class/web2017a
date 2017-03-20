@@ -16,6 +16,37 @@ public class Guest01Dao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 
+	public ArrayList<Guest01Bean> selectAll(String keyword,String search){
+		ArrayList<Guest01Bean> list = new ArrayList<Guest01Bean>();
+		search = search.trim();
+		String sql="select * from guest01 where "+keyword+" like '%"+search+"%'";
+		System.out.println(sql);
+		conn=OraDb.getConnection();
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			while(rs.next()){
+				Guest01Bean bean = new Guest01Bean();
+				bean.setSabun(rs.getInt("sabun"));
+				bean.setName(rs.getString("name"));
+				bean.setNalja(rs.getDate("nalja"));
+				bean.setPay(rs.getInt("pay"));
+				list.add(bean);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)rs.close();
+				if(stmt!=null)stmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
+	}
 	public ArrayList<Guest01Bean> selectAll(){
 		String sql="select * from guest01";
 		ArrayList<Guest01Bean> list= new ArrayList<Guest01Bean>();
@@ -98,6 +129,30 @@ public class Guest01Dao {
 		
 		
 		return bean;
+	}
+	
+	public int updateOne(int sabun,String name,int pay){
+		int result=0;
+		String sql="update guest01 set name=?,pay=? where sabun=?";
+		conn=OraDb.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setInt(2, pay);
+			pstmt.setInt(3, sabun);
+			result=pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return result;
 	}
 }
 
