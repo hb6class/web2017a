@@ -23,14 +23,19 @@
 		</tr>
 		<%
 		String param1=request.getParameter("page");
+		String param2=request.getParameter("viewcnt");
 		if(param1==null){
 			param1="1";
 		}
 		int pg=Integer.parseInt(param1);
+		if(param2==null){
+			param2="10";
+		}
+		int viewcnt=Integer.parseInt(param2);
 		
 		Guest01Dao dao= new Guest01Dao();
 		ArrayList<Guest01Bean> list=null; 
-		list=dao.selectAll(pg);
+		list=dao.selectAll(pg,viewcnt); 
 		if(list!=null){
 			for(int i=0; i<list.size(); i++){
 				Guest01Bean bean=list.get(i);
@@ -47,14 +52,26 @@
 		%>
 	</table>
 	<p>
-		<a href="list.jsp?page=1">[1]</a>
-		<a href="list.jsp?page=2">[2]</a>
-		<a href="list.jsp?page=3">[3]</a>
-		<a href="list.jsp?page=4">[4]</a>
-		<a href="list.jsp?page=5">[5]</a>
+	<% 
+	int tot=dao.selectCnt();
+	System.out.println("tot:"+tot);
+	int limit=(tot-1)/viewcnt+1;	
+	System.out.println("limit:"+limit);
+	for(int i=0; i<limit; i++){
+	%>
+		<a href="list.jsp?page=<%=i+1 %>&viewcnt=<%=viewcnt%>">[<%=i+1 %>]</a>
+		
+	<%} %>
 	</p>
 	<p>
-	
+		<form action="list.jsp">
+			<select name="viewcnt">
+				<option value="5">5개씩 보기</option>
+				<option value="10" selected="selected">10개씩 보기</option>
+				<option value="15">15개씩 보기</option>
+			</select>
+			<input type="submit" value="보기">
+		</form>
 		<a href="add.jsp">입력</a>
 	</p>
 	</center>	

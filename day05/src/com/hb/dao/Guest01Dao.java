@@ -15,11 +15,37 @@ public class Guest01Dao {
 	private Statement stmt;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	
+	public int selectCnt(){
+		int cnt=0;
+		String sql="select count(*) as cnt from guest01";
+		conn=OraDb.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				cnt=rs.getInt("cnt");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(rs!=null)rs.close();
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return cnt;
+	}
 
-	public ArrayList<Guest01Bean> selectAll(int page){
+	public ArrayList<Guest01Bean> selectAll(int page, int viewcnt){
 		ArrayList<Guest01Bean> list = new ArrayList<Guest01Bean>();
-		int pStart=(page-1)*10+1;
-		int pEnd=pStart+9;
+		int pStart=(page-1)*viewcnt+1;
+		int pEnd=pStart+viewcnt-1;
 		String sql="select * from ";
 		sql+="(select rownum as rn, A.sabun, A.name, A.nalja, A.pay from ";
 		sql+="(select * from guest01 order by sabun desc)A )B ";
