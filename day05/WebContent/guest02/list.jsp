@@ -56,11 +56,46 @@
 	int tot=dao.selectCnt();
 	System.out.println("tot:"+tot);
 	int limit=(tot-1)/viewcnt+1;	
-	System.out.println("limit:"+limit);
-	for(int i=0; i<limit; i++){
+	int strt=pg-2-1;
+	int end=pg+2;
+	if(strt<1)strt=0;
+	if(end>limit)end=limit;
+	//for(int i=0; i<limit; i++){
+	if(pg-2>1){	
+	%>
+	<a href="list.jsp?page=<%=pg-3 %>&viewcnt=<%=viewcnt%>">¢¸</a>
+	<%	
+	}
+	for(int i=strt; i<end; i++){
 	%>
 		<a href="list.jsp?page=<%=i+1 %>&viewcnt=<%=viewcnt%>">[<%=i+1 %>]</a>
 		
+	<%
+	} 
+	if(limit>pg+2){
+	%>
+	<a href="list.jsp?page=<%=pg+3 %>&viewcnt=<%=viewcnt%>">¢º</a>
+	<%} %>
+	</p>
+	<p>
+	<%
+	//10°³
+	int plmt=5;
+	strt=(pg-1)/plmt*plmt+1;
+	end=strt+(plmt-1);
+	if(limit<end)end=limit;
+	if(strt>1){
+	%>
+	<a href="list.jsp?page=<%=strt-1 %>&viewcnt=<%=viewcnt%>">¢¸</a>
+	<%
+	}
+	for(int i=strt; i<=end; i++){
+	%>
+	<a href="list.jsp?page=<%=i %>&viewcnt=<%=viewcnt%>">[<%=i %>]</a>
+	<%} 
+	if(end<limit){
+	%>
+	<a href="list.jsp?page=<%=end+1 %>&viewcnt=<%=viewcnt%>">¢º</a>
 	<%} %>
 	</p>
 	<p>
