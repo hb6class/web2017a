@@ -24,6 +24,8 @@
 		<%
 		String param1=request.getParameter("page");
 		String param2=request.getParameter("viewcnt");
+		String param3=request.getParameter("keyword");
+		
 		if(param1==null){
 			param1="1";
 		}
@@ -32,10 +34,16 @@
 			param2="10";
 		}
 		int viewcnt=Integer.parseInt(param2);
+		if(param3==null){
+			param3="";
+		}else{
+			param3=param3.trim();
+		}
+		String keyword=param3;
 		
 		Guest01Dao dao= new Guest01Dao();
 		ArrayList<Guest01Bean> list=null; 
-		list=dao.selectAll(pg,viewcnt); 
+		list=dao.selectAll(keyword,pg,viewcnt); 
 		if(list!=null){
 			for(int i=0; i<list.size(); i++){
 				Guest01Bean bean=list.get(i);
@@ -53,7 +61,7 @@
 	</table>
 	<p>
 	<% 
-	int tot=dao.selectCnt();
+	int tot=dao.selectCnt(keyword);
 	System.out.println("tot:"+tot);
 	int limit=(tot-1)/viewcnt+1;	
 	int strt=pg-2-1;
@@ -63,18 +71,18 @@
 	//for(int i=0; i<limit; i++){
 	if(pg-2>1){	
 	%>
-	<a href="list.jsp?page=<%=pg-3 %>&viewcnt=<%=viewcnt%>">◀</a>
+	<a href="list.jsp?keyword=<%=keyword %>&page=<%=pg-3 %>&viewcnt=<%=viewcnt%>">◀</a>
 	<%	
 	}
 	for(int i=strt; i<end; i++){
 	%>
-		<a href="list.jsp?page=<%=i+1 %>&viewcnt=<%=viewcnt%>">[<%=i+1 %>]</a>
+		<a href="list.jsp?keyword=<%=keyword %>&page=<%=i+1 %>&viewcnt=<%=viewcnt%>">[<%=i+1 %>]</a>
 		
 	<%
 	} 
 	if(limit>pg+2){
 	%>
-	<a href="list.jsp?page=<%=pg+3 %>&viewcnt=<%=viewcnt%>">▶</a>
+	<a href="list.jsp?keyword=<%=keyword %>&page=<%=pg+3 %>&viewcnt=<%=viewcnt%>">▶</a>
 	<%} %>
 	</p>
 	<p>
@@ -86,26 +94,31 @@
 	if(limit<end)end=limit;
 	if(strt>1){
 	%>
-	<a href="list.jsp?page=<%=strt-1 %>&viewcnt=<%=viewcnt%>">◀</a>
+	<a href="list.jsp?keyword=<%=keyword %>&page=<%=strt-1 %>&viewcnt=<%=viewcnt%>">◀</a>
 	<%
 	}
 	for(int i=strt; i<=end; i++){
 	%>
-	<a href="list.jsp?page=<%=i %>&viewcnt=<%=viewcnt%>">[<%=i %>]</a>
+	<a href="list.jsp?keyword=<%=keyword %>&page=<%=i %>&viewcnt=<%=viewcnt%>">[<%=i %>]</a>
 	<%} 
 	if(end<limit){
 	%>
-	<a href="list.jsp?page=<%=end+1 %>&viewcnt=<%=viewcnt%>">▶</a>
+	<a href="list.jsp?keyword=<%=keyword %>&page=<%=end+1 %>&viewcnt=<%=viewcnt%>">▶</a>
 	<%} %>
 	</p>
 	<p>
 		<form action="list.jsp">
+			<input type="hidden" name="keyword" value="<%=keyword %>">
 			<select name="viewcnt">
 				<option value="5">5개씩 보기</option>
 				<option value="10" selected="selected">10개씩 보기</option>
 				<option value="15">15개씩 보기</option>
 			</select>
 			<input type="submit" value="보기">
+		</form>
+		<form action="list.jsp">
+			<input type="text" name="keyword" value="<%=keyword%>">
+			<input type="submit" value="찾기">
 		</form>
 		<a href="add.jsp">입력</a>
 	</p>

@@ -16,12 +16,13 @@ public class Guest01Dao {
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	
-	public int selectCnt(){
+	public int selectCnt(String keyword){
 		int cnt=0;
-		String sql="select count(*) as cnt from guest01";
+		String sql="select count(*) as cnt from guest01 where name like ?";
 		conn=OraDb.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+keyword+"%");
 			rs=pstmt.executeQuery();
 			if(rs.next()){
 				cnt=rs.getInt("cnt");
@@ -42,13 +43,14 @@ public class Guest01Dao {
 		return cnt;
 	}
 
-	public ArrayList<Guest01Bean> selectAll(int page, int viewcnt){
+	public ArrayList<Guest01Bean> selectAll(String keyword,int page, int viewcnt){
 		ArrayList<Guest01Bean> list = new ArrayList<Guest01Bean>();
 		int pStart=(page-1)*viewcnt+1;
 		int pEnd=pStart+viewcnt-1;
 		String sql="select * from ";
 		sql+="(select rownum as rn, A.sabun, A.name, A.nalja, A.pay from ";
-		sql+="(select * from guest01 order by sabun desc)A )B ";
+		sql+="(select * from guest01 where name like '%"+keyword;
+		sql+="%' order by sabun desc)A )B ";
 		sql+="where B.rn>="+pStart+" and B.rn<="+pEnd;
 		
 		conn=OraDb.getConnection();
