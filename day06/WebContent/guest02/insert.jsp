@@ -15,6 +15,9 @@
 
 %>
 <body>
+	<jsp:useBean id="bean" class="com.hb.dto.Guest02Bean"></jsp:useBean>
+	<jsp:setProperty property="name" name="bean"/>
+	<jsp:setProperty property="pay" name="bean"/>
 <%
 	String param1=request.getParameter("name");
 	String param2=request.getParameter("pay");
@@ -29,8 +32,8 @@
 	conn=MyDB.getConnection();
 	try{
 		pstmt=conn.prepareStatement(sql);
-		pstmt.setString(1, name);
-		pstmt.setInt(2, pay);
+		pstmt.setString(1, bean.getName());
+		pstmt.setInt(2, bean.getPay());
 		result=pstmt.executeUpdate();
 	}finally{
 		pstmt.close();

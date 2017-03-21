@@ -15,12 +15,21 @@
 	private Connection conn;
 	private Statement stmt;
 	private ResultSet rs;
+	
+	private String space(int cnt){
+		String sp="";//
+		for(int i=0; i<cnt; i++){
+			sp+="&nbsp;&nbsp;&nbsp;";
+			if(i==cnt-1){sp+="¦±¦¬";}
+		}
+		return sp;
+	}
 %>
 <body>
 <%
 	ArrayList<Guest02Bean> list =new ArrayList<Guest02Bean>();
-	String sql="select sabun, name, nalja, pay from guest02 ";
-	sql+=" order by lvl1 desc, lvl3 asc";
+	String sql="select sabun, name, nalja, pay, lvl2 from guest02 ";
+	sql+=" order by lvl1 desc, lvl3 desc";
 	conn=MyDB.getConnection();
 	try{
 		stmt=conn.createStatement();
@@ -31,6 +40,7 @@
 			bean.setName(rs.getString(2));
 			bean.setNalja(rs.getDate(3));
 			bean.setPay(rs.getInt(4));
+			bean.setLvl2(rs.getInt(5));
 			list.add(bean);
 		}
 	}finally{
@@ -66,7 +76,7 @@
 		<%for(Guest02Bean bean:list){ %>
 		<tr>
 			<td><a href="detail.jsp?sabun=<%=bean.getSabun() %>"><%=bean.getSabun() %></a></td>
-			<td><%=bean.getName() %></td>
+			<td><%=space(bean.getLvl2())%><%=bean.getName() %></td>
 			<td><%=bean.getNalja() %></td>
 			<td><%=bean.getPay() %></td>
 		</tr>
