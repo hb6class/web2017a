@@ -14,7 +14,7 @@
 	private ResultSet rs;
 %>
 <body>
-	<jsp:useBean id="bean" class="com.hb.dto.Guest03Bean" scope="application"></jsp:useBean>
+	<jsp:useBean id="bean" class="com.hb.dto.Guest03Bean" scope="request"></jsp:useBean>
 	<jsp:setProperty property="sabun" name="bean"/>
 <%
 	String sql="select * from guest03 where sabun=?";

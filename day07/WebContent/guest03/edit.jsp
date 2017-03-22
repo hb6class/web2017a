@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR" import="java.util.Date"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,8 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:useBean id="bean" class="com.hb.dto.Guest03Bean" scope="application"></jsp:useBean>
-	<form action="update.jsp" method="post">
+	<jsp:useBean id="bean" class="com.hb.dto.Guest03Bean" scope="request"></jsp:useBean>
+	<jsp:setProperty property="sabun" name="bean"/>
+	<jsp:setProperty property="name" name="bean"/>
+	<jsp:setProperty property="nalja" name="bean"/>
+	<jsp:setProperty property="pay" name="bean"/>
+	<form action="main6.jsp" method="post">
 	<table width="80%" border="1" cellspacing="0">
 		<tr>
 			<td>사번</td>
@@ -20,7 +24,7 @@
 		</tr>
 		<tr>
 			<td>날짜</td>
-			<td><input type="text" name="nalja" value="<%=bean.getNalja() %>" disabled="disabled"></td>
+			<td><input type="text" name="nalja" value="<%=new Date() %>" disabled="disabled"></td>
 		</tr>
 		<tr>
 			<td>금액</td>

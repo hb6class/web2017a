@@ -25,7 +25,7 @@
 			<td height="300">
 			<!-- content -->
 			<h1>입력페이지</h1>
-			<%@ include file="add.jsp" %>
+			<jsp:include page="add.jsp"></jsp:include>
 			</td>
 		</tr>
 		<tr>

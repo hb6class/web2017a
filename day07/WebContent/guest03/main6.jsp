@@ -24,11 +24,9 @@
 		<tr>
 			<td height="300">
 			<!-- content -->
-			<h1><%=request.getParameter("sabun") %>님 상세페이지</h1>
-			<%@ include file="detail.jsp" %>
-			<a href="main5.jsp?sabun=<%=bean.getSabun() %>&name=<%=bean.getName() %>&pay=<%=bean.getPay() %>">수정</a>
-			<a href="#">삭제</a>
-			<a href="#">답글</a>
+			<h1>결 과</h1>
+			<%@ include file="update.jsp" %>
+			<a href="main.jsp">리스트로 이동</a>
 			</td>
 		</tr>
 		<tr>
