@@ -25,6 +25,12 @@
 		ur="guest/add.jsp";
 	}else if("insert".equals(ur)){
 		ur="guest/insert.jsp";
+	}else if("detail".equals(ur)){
+		ur="guest/detail.jsp";
+	}else if("edit".equals(ur)){
+		ur="guest/edit.jsp";
+	}else{
+		ur="err.jsp";
 	}
 %>
 	<table width="100%">
