@@ -24,10 +24,11 @@
 		<tr>
 			<td height="300">
 			<!-- content -->
-			<h1>리스트페이지</h1>
-			<%@ include file="list.jsp" %>
-			<a href="main2.jsp">입력</a>
-			<!-- content end-->
+			<h1><%=request.getParameter("sabun") %>님 상세페이지</h1>
+			<%@ include file="detail.jsp" %>
+			<a href="main5.jsp">수정</a>
+			<a href="#">삭제</a>
+			<a href="#">답글</a>
 			</td>
 		</tr>
 		<tr>

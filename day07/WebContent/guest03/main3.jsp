@@ -24,10 +24,9 @@
 		<tr>
 			<td height="300">
 			<!-- content -->
-			<h1>리스트페이지</h1>
-			<%@ include file="list.jsp" %>
-			<a href="main2.jsp">입력</a>
-			<!-- content end-->
+			<h1>결과페이지</h1>
+			<%@ include file="insert.jsp" %>
+			<a href="main.jsp">리스트로 이동</a>
 			</td>
 		</tr>
 		<tr>

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="EUC-KR" isErrorPage="true"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,7 +10,7 @@
 	<table width="100%">
 		<tr>
 			<td>
-				<img alt="logo" src="../imgs/logo2.jpg">
+				<img alt="logo" src="imgs/logo2.jpg">
 			</td>
 		</tr>
 		<tr>
@@ -24,9 +24,8 @@
 		<tr>
 			<td height="300">
 			<!-- content -->
-			<h1>리스트페이지</h1>
-			<%@ include file="list.jsp" %>
-			<a href="main2.jsp">입력</a>
+			<h1 style="color: red;">err:<%=exception.getMessage() %></h1>
+			<p>조속한 시일에 복구하겠습니다</p>
 			<!-- content end-->
 			</td>
 		</tr>
