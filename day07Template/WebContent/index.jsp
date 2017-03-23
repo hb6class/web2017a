@@ -13,11 +13,15 @@
 <%
 	// 사이트메쉬
 	String ur=request.getParameter("template");
+	String ur2=request.getParameter("template");
 	String sabun=request.getParameter("sabun");
 	String name=request.getParameter("name");
 	String nalja=request.getParameter("nalja");
 	String pay=request.getParameter("pay");
 	if(ur==null){
+		ur="main.jsp";
+		ur2="index";
+	}else if("index".equals(ur)){
 		ur="main.jsp";
 	}else if("list".equals(ur)){
 		ur="guest/list.jsp";
@@ -38,14 +42,23 @@
 			<td>
 				<img alt="logo" src="imgs/logo2.jpg">
 			</td>
-			<td>
-				<form action="">
+			<td width="450">
+			<jsp:useBean id="login" class="com.hb.dto.LoginBean" scope="session"></jsp:useBean>
+			<% if(login.getResult()>0){ %>
+				<jsp:include page="login/login.jsp">
+					<jsp:param value="<%=login.getName() %>" name="id"/>
+					<jsp:param value="<%=ur2 %>" name="ur2"/>
+				</jsp:include>
+			<%}else{ %>
+				<form action="login/result.jsp" method="post">
+					<input type="hidden" name="template" value="<%=ur2%>">
 					<p>
 						<label>id</label><input type="text" name="id">
 						<label>pw</label><input type="password" name="pw">
 						<input type="submit" value="로그인">
 					</p>
 				</form>
+			<%} %>
 			</td>
 		</tr>
 		<tr bgcolor="red"><!-- menu -->
