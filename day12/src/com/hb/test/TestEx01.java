@@ -28,7 +28,7 @@ public class TestEx01 {
 	}
 	@Test
 	public void testFunc4() {
-		assertTrue(false);
+		assertTrue(true);
 		assertFalse(false);
 	}
 	@Test
