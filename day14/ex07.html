@@ -1,0 +1,54 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script lang="javascript">
+        
+            function func1(){
+                var msg = prompt('날짜를 입력하시오','June 5, 1986 14:00:00');
+                alert(msg);
+                var d1;
+                
+                if(msg!="")d1= new Date(msg);
+                else d1= new Date();
+                
+                var yy=d1.getYear()+1900;
+                var mm=d1.getMonth()+1;
+                var dd=d1.getDate();
+                var hh=d1.getHours();
+                var mi=d1.getMinutes();
+                var ss=d1.getSeconds();
+                var week=d1.getDay();
+                
+                var now =yy+"년"+mm+"월"+dd+"일 ";
+                now+=func2(week)+"요일\n";
+                now+=hh+"시"+mi+"분"+ss+"초";
+                var result=confirm(now);
+                alert(result);
+            }
+            function func2(a){
+                var week;
+                switch(a){
+                    case 0:week="일"; break;
+                    case 1:week="월"; break;
+                    case 2:week="화"; break;
+                    case 3:week="수"; break;
+                    case 4:week="목"; break;
+                    case 5:week="금"; break;
+                    case 6:week="토"; break;
+                    default : "x";
+                        }
+                return week;
+            }
+            
+        
+        </script>
+	</head>
+
+	<body>
+        <button onclick="func1();">지금</button>
+	</body>
+</html>

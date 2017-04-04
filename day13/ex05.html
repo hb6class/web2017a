@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script lang="javascript">
+            //
+            function func1(){
+                document.write('함수실행');
+                //alert('함수실행');
+            }
+            
+            function func2(a,b){
+                alert(a+b);
+                return a+b;
+            }
+            
+            var c=1234;
+            function func3(){
+                var c=4321;
+                alert(c);
+                return;
+            }
+            function func4(){
+                alert(c);
+            }
+            document.write(func3());
+            /*
+            func1();
+            var sum=func2(100,10);
+            document.write(sum);
+            */
+        </script>
+	</head>
+
+	<body>
+        <button onclick="func1();">함수1실행</button>
+        <button onclick="func2(200,20);">함수2실행</button>
+        <button onclick="func3(100);">함수3실행</button>
+        <button onclick="func4();">함수4실행</button>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

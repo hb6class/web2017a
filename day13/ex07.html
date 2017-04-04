@@ -1,0 +1,105 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script lang="javascript">
+            // 숫자(정수&실수) 자료형-> Number형
+            var a1=100;
+            var a2=new Number();
+            
+            /* 문자열(문자&문자열) 자료형-> String형 */
+            var b1='abc';
+            var b2=new String();
+            /* 참거짓 자료형-> Boolean형 */
+            
+            var c1=false;
+            var c2=new Boolean();
+            
+            /* 배열
+            
+            java
+            
+            int[] arr1={1,2,3,4};
+            int[] arr2 = new int[4];
+            int[] arr3=new int[]{1,2,3,4};
+            */
+            var d1=[13,24,3,54];
+            var d2=new Array(4);
+            d2[0]=13;
+            d2[1]=24;
+            d2[2]=3;
+            d2[3]=54;
+            var d3=new Array(13,24,3,54);
+            var d4=new Array(13,'sadf',3,54);
+            d4[4]=1234;
+            d4[6]='aaaa';
+            
+            
+            /* 
+            json
+            오브젝트
+            java map
+            */
+            var g1={
+                'a':100
+                ,'b22222':1200
+                ,'sss':'abc'
+                ,'bbb':'zzzz'
+                ,func3:function (){
+                    document.write(this.a+"g1-fun3실행");
+                                  }
+            };
+            var g2=new Object();
+            g2['a']=100;
+            g2['b']=1200;
+            g2['a11']='abc';
+            g2['aa']='zzzz';
+            g2.abc=1234;
+            
+            
+            a=100;
+            var b=200;
+            c =300;
+            
+            /*
+            
+            function 자료형
+            
+            */
+            
+            function func1(){
+                document.write(a1+"fun1실행");
+            }
+            var func2=function (){
+                document.write("fun2실행");
+            };
+            
+                        
+            g2.func3=function (){
+                document.write("fun3실행");
+            };
+            
+            d4[5]=function (){
+                document.write("d4[5]실행");
+            };
+            
+            alert(d4['6']);
+            
+            /*
+            for(var i=0; i<d4.length; i++){
+                if(typeof(d4[i])=='function'){
+                    d4[i]();
+                }else{
+                    alert(d4[i]);
+                }
+            }
+            */
+        </script>
+	</head>
+	<body>
+
+	</body>
+</html>

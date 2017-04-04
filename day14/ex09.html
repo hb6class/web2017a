@@ -1,0 +1,29 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script lang="javascript">
+        /*
+            alert(window.screen.availWidth
+                  +"*"+window.screen.availHeight+"\n"
+                    +window.screen.width
+                  +"*"+window.screen.height);
+        */
+            function func1(a){
+                window.location.replace(a);
+            }
+            function func2(){
+                window.location.href="https://google.com";
+            }
+        </script>
+	</head>
+
+	<body>
+    <button onclick="func1('http://naver.com');">네이버</button>
+    <button onclick="func1('http://daum.net');">다음</button>
+    <button onclick="func2();">구글</button>
+	</body>
+</html>

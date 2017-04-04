@@ -1,0 +1,107 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script lang="javascript">
+        
+            /*클로져*/
+            
+            function func01(){
+                alert("func01 run");
+                var func2=function(){
+                    alert("func02 run");
+                }
+                return func02;
+            }
+            
+            //func01()();
+            
+            //////////// ex:bean///////////////
+            function student(){
+                return {
+                    'num':0
+                    ,'kor':0
+                    ,'eng':0
+                    ,'math':0
+                    ,getNum:function(){
+                        return this.num;
+                    }
+                    ,setNum:function(num){
+                        this.num=num;
+                    }
+                    ,getKor:function(){
+                        return this.kor;
+                    }
+                    ,setKor:function(kor){
+                        this.kor=kor;
+                    }
+                    ,getEng:function(){
+                        return this.eng;
+                    }
+                    ,setEng:function(eng){
+                        this.eng=eng;
+                    }
+                    ,getMath:function(){
+                        return this.math;
+                    }
+                    ,setMath:function(math){
+                        this.math=math;
+                    }
+                }; // return end  
+            }//student end
+            var arr = new Array();
+
+            arr[0]=student();
+            arr[0].setNum(1000);
+            arr[0].setKor(90);
+            arr[0].setEng(80);
+            arr[0].setMath(70);
+            arr[1]=student();
+            arr[1].setNum(1001);
+            arr[1].setKor(50);
+            arr[1].setEng(55);
+            arr[1].setMath(52);
+            
+            
+            document.write("<table>");
+            document.write("<tr>");
+            document.write("<td>학번</td>");
+            document.write("<td>국어</td>");
+            document.write("<td>영어</td>");
+            document.write("<td>수학</td>");
+            document.write("</tr>");
+            for(var i=0; i<arr.length; i++){
+                var stu=arr[i];
+            document.write("<tr>");
+            document.write("<td>"+stu.getNum()+"</td>");
+            document.write("<td>"+stu.getKor()+"</td>");
+            document.write("<td>"+stu.getEng()+"</td>");
+            document.write("<td>"+stu.getMath()+"</td>");
+            document.write("</tr>");
+            }
+            document.write("</table>");
+            
+            
+            
+        </script>
+	</head>
+
+	<body>
+
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

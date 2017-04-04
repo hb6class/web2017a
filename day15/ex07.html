@@ -1,0 +1,91 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            #menu{
+                clear: both;
+            }
+            #menu>ul{
+                margin: 0px;
+                padding: 0px;
+            }
+            #menu>ul>li{
+                float: left;
+                width: 50px;
+                height: 40px;
+                background-color: red;
+                list-style: none;
+                margin-right: 5px;
+            }
+            #menu+div{
+                clear: both;
+            }
+        </style>
+	</head>
+
+	<body>
+        <div id="header">
+            <h1>한빛교육센터</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li>menu1</li>
+                <li>menu2</li>
+                <li>menu3</li>
+                <li>menu4</li>
+            </ul>
+        </div>
+        <div id='content'>
+            <h1>메뉴제어</h1>
+            <p>
+                <input type="text"/>
+                <button onclick="add();">메뉴추가</button>
+                <button onclick="del();">메뉴제거</button>
+            </p>
+        </div>
+        
+        <script lang="javascript">
+        
+        var html=document.lastChild;
+//        var html=document.childNodes[1];
+        var body= document.lastChild.lastChild;
+//        var body= html.childNodes[2];
+        var menu=document.lastChild.lastChild.firstChild.nextSibling.nextSibling.nextSibling;
+//        var menu=body.childNodes[3];
+        var ul=document.lastChild.lastChild.firstChild.nextSibling.nextSibling.nextSibling.firstChild.nextSibling;  
+//        var ul=menu.childNodes[1];    
+        
+        var content=document.lastChild.lastChild.firstChild.nextSibling.nextSibling.nextSibling.firstChild.nextSibling.parentNode.nextSibling.nextSibling;
+//        var content=body.childNodes[5];
+        var input=content.childNodes[3].childNodes[1];    
+            
+        var cnt=4;  
+        var arr = new Array();
+        function add(){
+            console.log(input.value);
+   // 엘리먼트생성 -> <li></li> -> <li>menu5</li>
+           var add_li=document.createElement("li");
+           var msg;
+           if(input.value==""){ 
+            cnt++;
+            msg=document.createTextNode("menu"+cnt);
+           }else{
+            msg=document.createTextNode(input.value);   
+           }
+           add_li.appendChild(msg);
+           ul.appendChild(add_li);
+           arr.push(add_li);
+           input.value="";
+        }
+        function del(){
+//            var lng=ul.childNodes.length;
+            var del_li=arr.pop();
+            ul.removeChild(del_li);
+        }
+        </script>
+	</body>
+</html>

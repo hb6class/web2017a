@@ -1,0 +1,117 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script lang="javascript">
+        var mypopup;
+        function func1(){
+           /*
+           window.open(주소,_blank||_self); 
+           window.open(주소,"_blank","사이즈");    
+           window.open("ex02.html","_blank","width=300, height=300, menubar=1,status=yes,toolbar=yes,resizable=yes,location=0");
+           
+           window.open("ex02.html","_blank");
+           */ 
+            
+        mypopup=window.open("ex02.html","","width=300, height=300");
+            
+        }
+        function func2(){
+            mypopup.close();
+        }
+        
+        function func3(){
+            func1();
+            window.setTimeout(func3,1000);
+        }
+        var y=1;    
+        function func4(){
+            //mypopup.moveBy(10,10);
+            // 상대좌표이동(x,y);
+            //mypopup.moveTo(10,10*y++);
+            // 절대좌표이동(x,y);
+//            mypopup.resizeBy(10,10);
+//            mypopup.resizeTo(10,10*y++);
+            window.scrollTo(0,0);
+        }
+            function func5(){
+                var msg="";
+                msg+="창넓이:"+window.outerWidth;
+                msg+="\n";
+                msg+="창높이:"+window.outerHeight;
+                msg+="\n";
+                msg+="문서넓이:"+window.innerWidth;
+                msg+="\n";
+                msg+="문서높이:"+window.innerHeight;
+                msg+="\n";
+                msg+="문서주소:"+window.location;
+                msg+="\n";
+                msg+="문서주소2:"+window.location.href;
+                msg+="\n";
+                
+                alert(msg);
+            }
+        </script>
+        <style>
+            button:nth-child(4){
+                position: fixed;
+                left: 300px;
+            }
+        </style>
+	</head>
+
+	<body>
+        <button onclick="func1();">팝업</button>
+        <button onclick="func2();">닫기</button>
+        <button onclick="func3();">장난</button>
+        <button onclick="func4();">맨 위로</button>
+        <button onclick="func5();">정보</button>
+        <p>상단</p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p>1 </p>
+        <p></p>
+        <p>맨아래</p>
+	</body>
+</html>

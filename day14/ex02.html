@@ -1,0 +1,45 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script lang="javascript">
+            var func1=function(){
+                alert('func1의 실행');
+            };
+            var obj={'a1':100, 'a2':'asb','a3':func1,'a4':1234};
+            
+            var obj2={'a1':222,'a3':func1};
+            var obj3={'a1':4444,'a2':[4,3,2],'a3':{'b1':"aa"}};
+            
+            var arr1=[111, func1];
+            var arr2=[222, [333,4444], {'a1':222}];
+            
+            function func2(a){
+                for(var b in a){
+                    if(typeof(a[b])=='function'){
+                        a[b]();
+                    }else{
+                        alert(a[b]);
+                    }
+                }
+            }
+            function func3(a){
+                a();
+            }
+            //func3(func1);
+            
+            
+            var $=function(a){a();};
+            
+            $(func1);
+            
+        </script>
+	</head>
+
+	<body>
+
+	</body>
+</html>

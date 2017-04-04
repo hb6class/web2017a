@@ -1,0 +1,31 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script lang="javascript">
+            /* Math.random() 로또 프로그램 */
+        
+        var lotto=new Array();
+        var same=false;
+        for(var i=0; i<6; i++){
+            same=false;
+            lotto[i]=Math.floor(Math.random()*45)+1;
+            for(var j=0; j<i; j++){
+              if(lotto[i]==lotto[j]){same=true;continue;}
+            }
+            if(same){i--;continue;}
+        }
+        //alert(lotto);
+            for(var i=0; i<lotto.length; i++){
+                document.write("<img src='imgs/ball-"+lotto[i]+".png'/><br/>");
+            }
+        </script>
+	</head>
+
+	<body>
+   
+	</body>
+</html>

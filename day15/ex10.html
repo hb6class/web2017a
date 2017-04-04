@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+	</head>
+
+	<body>
+      <div id="header">
+          
+      </div>
+       <div id='menu'>
+        <ul>
+            <li><a href="#">menu1</a></li>
+            <li><a href="#">menu2</a></li>
+            <li><a href="#">menu3</a></li>
+            <li><a href="#">menu4</a></li>
+        </ul>
+       </div>
+       <div id="content">
+          <input type="text" />
+          <button onclick="add();">add</button>
+       </div>
+        <script lang="javascript">
+        var header=document.getElementById("header");
+        header.innerHTML="<h1>한빛교육센터</h1>";
+            
+        var menu=document.getElementById('menu');
+        var ul=menu.getElementsByTagName('ul')[0];
+            
+        var content=document.getElementById('content');
+        function add(){
+            var txt=content.getElementsByTagName('input')[0].value;
+            if(txt!=""){
+            var msg=ul.innerHTML;
+            msg+="<li><a href='#'>"+txt+"</a></li>";
+            ul.innerHTML=msg;
+            content.getElementsByTagName('input')[0].value="";
+            }
+        }
+            
+        </script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

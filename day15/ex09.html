@@ -1,0 +1,35 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+	</head>
+
+	<body>
+        <div>
+            <button onclick="add();">add</button>
+            <button onclick="stop();">stop</button>
+        </div>
+        <div id="work"></div>
+        <script lang="javascript">
+            var cnt=0;
+            var work=document.getElementById("work");
+            var img =document.createElement("img");
+            work.appendChild(img);
+            
+            function add(){
+             if(cnt<6)cnt++;
+                else cnt=1;
+             img.setAttribute("src","imgs/img0"+cnt+".jpg");
+             console.log(img.attributes);
+            }
+            
+            var img_loop=window.setInterval(add,1000);
+            function stop(){
+                window.clearInterval(img_loop);
+            }
+        </script>
+	</body>
+</html>
