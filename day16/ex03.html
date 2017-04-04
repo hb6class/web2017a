@@ -1,0 +1,58 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+        <script lang="javascript">
+        var btn;
+        window.onload=function(){
+//            alert('문서의 로딩이 완료되었습니다');
+            btn=document.querySelector('button');
+            console.log('btn:'+btn);
+            btn.onclick=function(){
+                alert('버튼클릭');
+            };
+            
+            btn.onmouseover=function(){
+                console.log('마우스위로 올라감');
+            };
+            btn.onmouseout=function(){
+                console.log('마우스빠져나감');
+            };
+            btn.onmousedown=function(){
+                console.log('마우스다운');
+            };
+            btn.onmouseup=function(){
+                console.log('마우스업');
+            };
+            btn.onfocus=function(){
+                console.log('버튼이 포커스얻음');
+            };
+            btn.onblur=function(){
+                console.log('버튼이 포커스 잃음');
+            };
+        };
+        </script>
+	</head>
+
+	<body>
+        <div>
+            <button>버튼</button>
+        </div>
+        
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

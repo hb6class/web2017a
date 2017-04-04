@@ -1,0 +1,124 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            form span{
+                color: red;
+            }
+        </style>
+		<script lang="javascript">
+        var inputs;
+        var id,pw,repw,email;
+        var p;
+            
+        function id_chk(){
+            var msg=id.value;
+            var low=p[0];
+            if(msg.length<4){
+                var tmp=low.innerHTML;
+                tmp+="<span>4자이상 입력하셔야합니다</span>";
+                low.innerHTML=tmp;
+                return true;
+            }else if(!(msg.charCodeAt(0)>64&&msg.charCodeAt(0)<123)){
+                var tmp=low.innerHTML;
+                tmp+="<span>첫글자는 영문으로 시작하셔야합니다</span>";
+                low.innerHTML=tmp;
+                return true;
+            }else{ false;}
+        } 
+        function pw_chk(){
+            var low1=p[1];
+            var low2=p[2];
+            if(pw.value==""){
+                var tmp=low1.innerHTML;
+                tmp+="<span>패스워드가 비어있습니다</span>";
+                low1.innerHTML=tmp;
+                return true;
+            }else if(pw.value!=repw.value){
+                var tmp=low2.innerHTML;
+                tmp+="<span>패스워드와 동일해야합니다</span>";
+                low2.innerHTML=tmp;
+                return true;
+            }else return false;
+        }
+        function email_chk(){
+            var msg=email.value;
+            var result=true;
+            for(var i=1; i<msg.length; i++){
+                if('@'.charCodeAt(0)==msg.charCodeAt(i))result=false;
+            }
+            return result;
+        }
+            
+        window.onload=function(){
+            inputs=document.querySelectorAll('input');
+            p=document.querySelectorAll('form>p');
+            id=inputs[0];
+            pw=inputs[1];
+            repw=inputs[2];
+            email=inputs[3];
+            var smit=inputs[4];
+            smit.onclick=function(){
+//                alert('버튼작동');
+                if(id_chk())return false;
+                if(pw_chk())return false;
+                if(email_chk())return false;
+                return true;
+            };
+        };
+        
+        </script>
+	</head>
+
+	<body>
+        <div id="header">
+            <h1>한빛교육센터</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+            </ul>
+        </div>
+        <div id="content">
+           <h1>회원가입</h1>
+           <form action="ex01.html">
+               
+            <p>
+                  <label for="id">id</label>
+                  <input type="text" name="id" id="id" />
+            </p> 
+            <p>
+                  <label for="pw">pw</label>
+                  <input type="text" name="pw" id="pw" />
+            </p> 
+            <p>
+                  <label for="pw">재입력</label>
+                  <input type="text" name="pw2" id="pw2" /> 
+            </p> 
+            <p>
+                  <label for="email">email</label>
+                  <input type="text" name="email" id="email" /> 
+            </p> 
+              
+            <p>
+                <input type="submit" value="전송"/>
+                <input type="reset" value="취소"/>
+            </p>
+           </form>
+        </div>
+        <div id="footer">
+            <p>ⓒ hanbit Corp.</p>
+        </div>
+	</body>
+</html>
+
+
+
+
