@@ -19,6 +19,7 @@
                 background-color: red;
             }
             #img>a{
+
                 position: absolute;
                 left: -20px;
                 top:65px;
@@ -46,7 +47,9 @@
             nxt=document.querySelectorAll('#img>a')[1];
             init();
             nxt.onclick=nextFunc;
+            dv3.onclick=nextFunc;
             prv.onclick=prevFunc;
+            dv1.onclick=prevFunc;
         };
         function init(){
             settingImg(dv1,cnt++);
