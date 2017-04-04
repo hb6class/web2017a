@@ -1,0 +1,126 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            #img{
+                width: 420px;
+                height: 136px;
+                margin: 0px auto;
+                position: relative;
+            }
+            #img>div{
+                width: 136px;
+                height: 136px;
+                display: inline-block;
+                background-color: red;
+            }
+            #img>a{
+                position: absolute;
+                left: -20px;
+                top:65px;
+                width: 40px;
+                height: 40px;
+                background-color: blue;
+                display: inline-block;
+                border-radius: 20px;
+                text-indent: -9999px;
+            }
+            #img>a:last-child{
+                left: 420px;
+            }
+            
+        </style>
+        <script lang="javascript">
+        var dv1,dv2,dv3,prv,nxt;
+        var cnt=1;
+        var maxCnt=3;
+        window.onload=function(){
+            dv1=document.querySelectorAll('#img>div')[0];
+            dv2=document.querySelectorAll('#img>div')[1];
+            dv3=document.querySelectorAll('#img>div')[2];
+            prv=document.querySelectorAll('#img>a')[0];
+            nxt=document.querySelectorAll('#img>a')[1];
+            init();
+            nxt.onclick=nextFunc;
+            prv.onclick=prevFunc;
+        };
+        function init(){
+            settingImg(dv1,cnt++);
+            settingImg(dv2,cnt);
+            settingImg(dv3,cnt+1);
+        }
+        function settingImg(tmp,num){
+            tmp.innerHTML="<img src='imgs/img0"+num+".jpg'/>";
+        }
+        function prevFunc(){
+            cnt--;
+            if(cnt>1){
+                nextSet();
+            }else if(cnt==1){
+                firstSet();
+            }else{
+                cnt=maxCnt;
+                lastSet();
+            }
+        }
+        function nextFunc(){
+            cnt++;
+            if(cnt<maxCnt){
+                nextSet();
+            }else if(cnt==maxCnt){
+                lastSet();
+            }else{
+                cnt=1;
+                firstSet();
+            }
+            return false;
+        }
+        function nextSet(){
+            settingImg(dv1,cnt-1);
+            settingImg(dv2,cnt);
+            settingImg(dv3,cnt+1);
+        }
+        function lastSet(){
+            settingImg(dv1,cnt-1);
+            settingImg(dv2,cnt);
+            settingImg(dv3,1);
+        }
+        function firstSet(){
+            settingImg(dv1,maxCnt);
+            settingImg(dv2,cnt);
+            settingImg(dv3,cnt+1);
+        }
+        </script>
+	</head>
+
+	<body>
+        <div id="header">
+            <h1>한빛교육센터</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+            </ul>
+        </div>
+        <div id="content">
+           <div id="img">
+            <div></div>
+            <div></div>
+            <div></div>
+            <a href="#">prev</a>
+            <a href="#">next</a>
+           </div>
+            
+        </div>
+        <div id="footer">
+            <p>ⓒ hanbit Corp.</p>
+        </div>
+	</body>
+</html>

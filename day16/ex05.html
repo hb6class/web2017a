@@ -1,0 +1,93 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+        <style>
+            #content>div{
+/*                background-color: red;*/
+                width: 320px;
+                height: 320px;
+                display: inline-block;
+                margin: 0px auto;
+                
+                position: relative;
+            }
+            #content>div>#img{
+/*                background-color: blue;*/
+                width: 320px;
+                height: 320px;
+                margin: 0px auto;
+                display: inline-block;
+            }
+            #content>div>a{
+                width: 20px;
+                height: 20px;
+                background-color: red;
+                display: inline-block;
+                position: absolute;
+                top:150px;
+                text-indent: -9999px;
+                border-radius: 10px;
+            }
+            #content>div>a:last-child{
+                left: 300px;
+            }
+        </style>
+       <script lang="javascript">
+        var div_img,prv,nxt;
+        var cnt=1;
+           window.onload=function(){
+               div_img=document.querySelector('#img');
+               div_img.innerHTML='<img src="imgs/big0'+cnt+'.jpg" />';
+               
+               prv=document.querySelectorAll('#content>div>a')[0];
+               nxt=document.querySelectorAll('#content>div>a')[1];
+               
+               nxt.onclick=function(){
+                   if(cnt<6)cnt++;
+                   else cnt=1;
+                   div_img.innerHTML='<img src="imgs/big0'+cnt+'.jpg" />';
+                   
+                   return false;
+               };
+               prv.onclick=function(){
+                   if(cnt>1)cnt--;
+                   else cnt=6;
+                   div_img.innerHTML='<img src="imgs/big0'+cnt+'.jpg" />';
+                   
+                   return false;
+               };
+           };
+           
+       </script>
+	</head>
+
+	<body>
+        <div id="header">
+            <h1>한빛교육센터</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="#">menu1</a></li>
+                <li><a href="#">menu2</a></li>
+                <li><a href="#">menu3</a></li>
+                <li><a href="#">menu4</a></li>
+            </ul>
+        </div>
+        <div id="content">
+           <div>
+            <div id="img"></div>
+            <a href="#">prev</a>
+            <a href="#">next</a>
+           </div>
+            
+        </div>
+        <div id="footer">
+            <p>ⓒ hanbit Corp.</p>
+        </div>
+        
+	</body>
+</html>
