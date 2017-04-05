@@ -1,0 +1,97 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+
+            #stage{
+                width: 600px;
+                height: 500px;
+                background-color: antiquewhite;
+                position: relative;
+            }
+            #content button{
+                width: 50px;
+                height: 50px;
+            }
+            #stage>div{
+                width: 50px;
+                height: 50px;
+                background-image: url(imgs/ball.png);
+                background-size: 100%;
+                position: absolute;
+            }
+
+        </style>
+        <script lang="javascript">
+        var obj, btns;
+        var leftCnt=0;
+        var topCnt=0;
+        var rightMove=function(){
+            leftCnt=leftCnt+10;
+            if(leftCnt>600-50)leftCnt=600-50;
+            obj.style.left=leftCnt+'px';
+        };
+        var leftMove=function(){
+            leftCnt-=10;
+            if(leftCnt<0)leftCnt=0;
+            obj.style.left=leftCnt+'px';
+        };
+        var bottomMove=function(){
+            topCnt+=10;
+            if(topCnt>500-50)topCnt=500-50;
+            obj.style.top=topCnt+'px';
+        };
+        var topMove=function(){
+            topCnt-=10;
+            if(topCnt<0)topCnt=0;
+            obj.style.top=topCnt+'px';
+        };
+
+        var keyMove=function(event){
+//            alert("key:"+event.keyCode);
+//            alert("key:"+event.key);
+            if(event.key=='w'){
+                topMove();
+            }else if(event.key=='s'){
+                bottomMove();
+            }else if(event.key=='a'){
+                leftMove();
+            }else if(event.key=='d'){
+                rightMove();
+            }
+        };
+
+        window.onload=function(){
+        obj=document.querySelector('#stage>div');
+        btns=document.querySelectorAll('#content>button');
+        btns[0].addEventListener('click',topMove);
+        btns[1].addEventListener('click',bottomMove);
+        btns[2].addEventListener('click',leftMove);
+        btns[3].addEventListener('click',rightMove);
+        };
+
+        document.addEventListener('keypress',keyMove);
+        </script>
+	</head>
+
+	<body>
+        <div id="content">
+           <button>↑</button>
+           <button>↓</button>
+           <button>←</button>
+           <button>→</button>
+            <div id="stage">
+               <div></div>
+            </div>
+
+        </div>
+	</body>
+</html>

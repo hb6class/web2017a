@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            #content span{
+                color: red;
+            }
+        </style>
+        <script lang="javascript">
+        var input, span;
+
+            window.onload=function(){
+                input=document.querySelector("#content input");
+                span=document.querySelector("#content span");
+//                input.onkeyup=showMsg;
+                input.addEventListener('keypress',showMsg);
+//                document.addEventListener('keypress',showMsg);
+            };
+        function showMsg(event){
+            if(event.target==input)span.innerText=span.innerText+event.key;
+        }
+        </script>
+	</head>
+
+	<body>
+        <div id="content">
+            <form>
+                <input type="password" /><span></span>
+
+
+
+
+
+            </form>
+
+
+        </div>
+
+	</body>
+</html>
