@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script lang="javascript">
+            var btn;
+            window.addEventListener('load',func);
+
+            function func(){
+                btn=document.querySelectorAll('body>div>button');
+
+                /*
+                btn.onclick=function(){
+                    alert('버튼작동');
+                };
+
+                btn.onclick=function(){
+                    alert('버튼작동2');
+                };
+                */
+                var funcbtn=function(){
+                    alert('리스너를 통한 이벤트 등록');
+                };
+                btn[0].addEventListener('click',funcbtn);
+                btn[0].addEventListener('click',function(){
+                    console.log('버튼1클릭됨');
+                });
+
+                btn[1].addEventListener('click',function(){
+                    btn[0].removeEventListener('click',funcbtn);
+                });
+
+                /*
+                btn.addEventListener('mouseover',function(){
+                    console.log('마우스가 위로 올라감');
+                });
+                btn.addEventListener('focus',function(){
+                    console.log('포커스얻음');
+                });
+                btn.addEventListener('mouseout',function(){
+                    console.log('마우스빠져나감');
+                });
+                btn.addEventListener('blur',function(){
+                    console.log('포커스잃음');
+                });
+                */
+
+            };
+        </script>
+	</head>
+
+	<body>
+        <div>
+            <div></div>
+            <button>버튼</button>
+            <button>버튼2</button>
+        </div>
+
+	</body>
+</html>
