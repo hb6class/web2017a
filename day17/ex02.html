@@ -50,11 +50,20 @@
                img.setAttribute('src',url);
            };
            var nextimg=function(event){
-               event.preventDefault();
+               if(event)event.preventDefault();
                cnt++;
                if(!(cnt<imgs.length))cnt=0;
                url="imgs/"+imgs[cnt];
                img.setAttribute('src',url);
+           };
+           var nxt=function(){
+               var event=document.createEvent("HTMLEvents");
+                /*
+                HANDLE WINAPI CreateEvent(LPSECURITY_ATTRIBUTES lpEventAttributes,BOOL bManualReset, BOOL bInitialState, LPCTSTR lpName);
+                */
+               event.initEvent('click',true,false);
+               //event.initEvent(type, bubbles, cancelable);
+               atag[1].dispatchEvent(event);
            };
            window.onload=function(){
                banner=document.querySelector('#banner');
@@ -62,6 +71,7 @@
                atag=banner.querySelectorAll('a');
                atag[1].addEventListener('click',nextimg);
                atag[0].addEventListener('click',previmg);
+               window.setInterval(nxt,3000);
            };
            /*
            window.addEventListener('load',function(){

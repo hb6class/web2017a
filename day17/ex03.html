@@ -1,0 +1,80 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            #banner{
+                width: 420px;
+                margin: 0px auto;
+            }
+        </style>
+        <script lang="javascript">
+            var imgs, atag, base;
+            var cnt=0;
+            window.onload=function(){
+                imgs=document.querySelectorAll('#banner>#imgs>img');
+                atag=document.querySelectorAll('#banner>a');
+                base=document.querySelector('#imgs');
+                setImgList();
+                hdnImg();
+                showImg(cnt);
+                atag[1].addEventListener('click',nextImg);
+            };
+            function setImgList(){
+                var tmp=base.innerHTML;
+                tmp+='<img alt="img1" src="imgs/img01.jpg"/>';
+                tmp+='<img alt="img2" src="imgs/img02.jpg"/>';
+                base.innerHTML=tmp;
+                imgs=document.querySelectorAll('#banner>#imgs>img');
+            }
+            function hdnImg(){
+                for(var i=0; i<imgs.length; i++){
+                    imgs[i].style.display='none';
+                }
+            }
+            function showImg(idx){
+                if(idx==8){idx=0;cnt=0;}
+                imgs[idx].style.display='inline-block';
+                imgs[idx+1].style.display='inline-block';
+                imgs[idx+2].style.display='inline-block';
+            }
+            function nextImg(event){
+                if(event)event.preventDefault();
+                cnt++;
+                hdnImg();
+                showImg(cnt);
+            }
+        </script>
+	</head>
+
+	<body>
+
+	    <div id="banner">
+            <div id="imgs">
+	        <img alt="img1" src="imgs/img01.jpg"/>
+	        <img alt="img2" src="imgs/img02.jpg"/>
+	        <img alt="img3" src="imgs/img03.jpg"/>
+	        <img alt="img4" src="imgs/img04.jpg"/>
+	        <img alt="img5" src="imgs/img05.jpg"/>
+	        <img alt="img6" src="imgs/img06.jpg"/>
+	        <img alt="img7" src="imgs/img07.jpg"/>
+	        <img alt="img8" src="imgs/img08.jpg"/>
+	        </div>
+	        <a href="#">prev</a>
+	        <a href="#">next</a>
+
+	    </div>
+
+	</body>
+</html>
+
+
+
+
