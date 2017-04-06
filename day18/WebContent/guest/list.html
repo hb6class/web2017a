@@ -5,16 +5,51 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 /* ajax통신 */
-	var content, table;
+	var xhr;
+	var content, table, menu, atag, page1, page2;
 	window.onload=function(){
 		content=document.getElementById("content");
 		table=content.getElementsByTagName("table")[0];
+		menu=document.getElementById("menu");
+		atag=menu.getElementsByTagName("a");
+		page1=content.querySelector("#page1");
+		page2=content.querySelector("#page2");
+		page2.style.display="none";
+		
+		
 		start();
+		
+		atag[0].addEventListener('click',showlist);
+		atag[1].addEventListener('click',addform);
+		
+		page2.addEventListener('submit',insertOne);
 	};
+	
+	function showlist(event) {
+		event.preventDefault();
+		window.location.reload();
+	}
+	
+	function addform(event) {
+		event.preventDefault();
+		//content.innerHTML="<h1>입력페이지</h1>";
+		page1.style.display='none';
+		page2.style.display="block";
+	}
+	
+	function insertOne() {
+		var input=page2.querySelectorAll("input");
+		var url="insert.html?num="+input[0].value+"&kor="+input[1].value+"&eng="+input[2].value+"&math="+input[3].value;
+		xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){};
+		xhr.open('get', url, true);
+		xhr.send();
+	}
+	
 	function start(){
 		var msg="";
-		var url="/day18/student.xml";
-		var xhr=new XMLHttpRequest();
+		var url="stu.xml";//"/day18/student.xml";
+		xhr=new XMLHttpRequest();
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4){
 				if(xhr.status==200){
@@ -47,6 +82,7 @@
 		<a href="/day18/guest/add.html">입력</a>
 	</div>
 	<div id="content">
+		<div id="page1">
 		<h1>성적리스트</h1>
 		<table>
 			<tr>
@@ -56,6 +92,28 @@
 				<th>수학</th>
 			</tr>
 		</table>
+		</div>
+		<div id="page2">
+		<h1>입력페이지</h1>
+		<form>
+			<p>
+				<label>학번</label><input type="text" name="num"/>
+			</p>
+			<p>
+				<label>국어</label><input type="text" name="kor"/>
+			</p>
+			<p>
+				<label>영어</label><input type="text" name="eng"/>
+			</p>
+			<p>
+				<label>수학</label><input type="text" name="math"/>
+			</p>
+			<p>
+				<input type="submit" value="입력"/>
+				<input type="reset" value="취소"/>
+			</p>
+		</form>
+		</div>
 	</div>
 	<div id="footer">
 		<p>Copyright (c) 2017 한빛교육센터 All rights reserved.</p>

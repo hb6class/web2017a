@@ -50,6 +50,16 @@
   	<servlet-name>lec05</servlet-name>
   	<url-pattern>/guest/lec05.nhn</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>stuxml</servlet-name>
+  	<servlet-class>com.hb.pm.MyXML</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>stuxml</servlet-name>
+  	<url-pattern>/guest/stu.xml</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
 
 
