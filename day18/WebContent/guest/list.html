@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+/* ajax통신 */
+	var content, table;
+	window.onload=function(){
+		content=document.getElementById("content");
+		table=content.getElementsByTagName("table")[0];
+		start();
+	};
+	function start(){
+		var msg="";
+		var url="/day18/student.xml";
+		var xhr=new XMLHttpRequest();
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4){
+				if(xhr.status==200){
+					var obj=xhr.responseXML;
+					var stus=obj.getElementsByTagName("student");
+					for(var i=0; i<stus.length; i++){
+						var arr=stus[i].children;
+						msg+="<tr>";
+						msg+="<td>"+arr[0].childNodes[0].nodeValue+"</td>";
+						msg+="<td>"+arr[1].childNodes[0].nodeValue+"</td>";
+						msg+="<td>"+arr[2].childNodes[0].nodeValue+"</td>";
+						msg+="<td>"+arr[3].childNodes[0].nodeValue+"</td>";
+						msg+="</tr>";
+					}
+					table.innerHTML=table.innerHTML+msg;
+				}
+			}
+		};
+		xhr.open('get', url, true);
+		xhr.send();
+	}
+</script>
+</head>
+<body>
+	<div id="header">
+		<h1>학생성적관리프로그램</h1>
+	</div>
+	<div id="menu">
+		<a href="/day18/guest/list.html">리스트</a>
+		<a href="/day18/guest/add.html">입력</a>
+	</div>
+	<div id="content">
+		<h1>성적리스트</h1>
+		<table>
+			<tr>
+				<th>학번</th>
+				<th>국어</th>
+				<th>영어</th>
+				<th>수학</th>
+			</tr>
+		</table>
+	</div>
+	<div id="footer">
+		<p>Copyright (c) 2017 한빛교육센터 All rights reserved.</p>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
