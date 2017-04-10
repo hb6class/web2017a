@@ -1,0 +1,50 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript">
+            var cnt=0;
+            function func(){
+                cnt++;
+//                console.log('func run:'+cnt);
+                if(this.msg!=undefined) this.msg=this.msg+cnt+"+";
+                else this.msg=cnt+"+";
+                return this;
+            };
+
+            window.onload=function(){
+
+               /* $('#content>h1').css('backgroundColor','gray').css('color','red').next();
+                $('#content>h1').parent().children('ul');
+
+                $('#content>h1').parent().find('ul');
+                $('#content>h1').parent().find('li');
+                */
+
+
+            };
+
+        </script>
+	</head>
+
+	<body>
+       <div id='content'>
+        <h1>목록</h1>
+           <ul>
+               <li>서론</li>
+               <li>본론1</li>
+               <li>본론2</li>
+               <li>본론3</li>
+               <li>본론4</li>
+               <li>본론5</li>
+               <li>본론6</li>
+               <li>결론</li>
+           </ul>
+       </div>
+
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            h1{
+                /*background-color: blue;
+                border-width: 3px;
+                border-color: aqua;
+                border-style: dotted;*/
+            }
+
+        </style>
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript">
+            window.onload=function(){
+
+                var t1=$('h1:nth-child(2)');
+                var t2=document.querySelector('h1');
+//                t1.html('edit02');
+//                alert(t1.html());
+                // style
+                //t1.css('background-color','red');
+                //alert(t1.css('backgroundColor'));
+                //t1.css('fontSize',6);
+                //alert(t1.css('fontSize'));
+                //t1.css('border','2px solid gray');
+                //alert(t1.css('border'));
+                //alert(t1.css(['border-width', 'border-color', 'border-style'])); ->뒤에서
+                /*
+                $('h1').css('background-color',function(idx){
+                    var array=['pink','hotpink','red'];
+                    return array[idx];
+                });
+                */
+
+                var obj={   'background-color': 'blue'
+                            ,'border-width': '3px'
+                            ,'border-color': 'aqua'
+                            ,'border-style': 'dotted'
+                        };
+
+                t1.css(obj);
+
+            };
+        </script>
+	</head>
+
+	<body>
+        <h1>ex01</h1>
+        <h1>ex02</h1>
+        <h1>ex03</h1>
+	</body>
+</html>

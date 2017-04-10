@@ -1,0 +1,38 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+
+	</head>
+
+	<body>
+        <h1>list</h1>
+        <ul>
+            <li id='li1'><a href="#">menu1</a></li>
+            <li class="cl2"><a href="#">menu2</a></li>
+            <li class="cl2"><a href="#">menu3</a></li>
+            <li><a href="#">menu4</a></li>
+        </ul>
+
+        <button>add</button>
+
+		<script type="text/javascript">
+        /*
+        엘리먼트의 선택 - css 선택자 동일
+        innerHTML - html()함수 인자o=setter
+        innerText - text()함수 인자x=getter,String
+        */
+            var btn=document.querySelector('button');
+            btn.onclick=function(){
+                var ul=$('ul').html();
+                ul+='<li>add menu</li>';
+                $('ul').html(ul);
+            };
+
+        </script>
+	</body>
+</html>
