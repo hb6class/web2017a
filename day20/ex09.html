@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript">
+
+            window.onload=function(){
+//                $('h1').text("");
+//                $('h1').empty();
+//                $('h1').remove();
+//                console.log($('body').html());
+//                var lis=$('ul').html();
+//                lis+='<li>목록5</li>';
+//                $('ul').html(lis);
+//                $('ul').append('<li>add5</li>');
+//                $('ul').prepend('<li>add0</li>');
+//                $('<li>add6</li>').appendTo('ul');
+//                $('<li>add-1</li>').prependTo('ul');
+//                $('li:eq(3)').after('<li>add2.5</li>');
+//                $('li:eq(3)').before('<li>add1.5</li>');
+                $('<li>add2.5</li>').insertAfter('li:eq(1)');
+                $('<li>add1.5</li>').insertBefore('li:eq(1)');
+            };
+        </script>
+	</head>
+
+	<body>
+        <h1>ex09</h1>
+        <ul>
+            <li>목록1</li>
+            <li>목록2</li>
+            <li>목록3</li>
+            <li>목록4</li>
+        </ul>
+	</body>
+</html>

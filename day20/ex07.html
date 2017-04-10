@@ -1,0 +1,40 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+        <script type="text/javascript">
+        var obj =['item1','item2','item3'];
+
+            window.onload=function(){
+//                $('h1').css('color','red');
+                var h1=document.querySelector('h1');
+                $(h1).css('color','blue');
+            };
+
+
+            /*
+            obj.forEach(function(ele,idx){
+                alert(obj[idx]);
+            });
+            */
+
+            $(obj).each(function(idx,ele){
+                alert(this);
+            });
+
+            /*
+            $.each(obj,function(idx,ele){
+                alert(ele);
+            });
+           */
+        </script>
+	</head>
+
+	<body>
+        <h1>ex07</h1>
+	</body>
+</html>

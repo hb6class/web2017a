@@ -1,0 +1,44 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style></style>
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript">
+            var cnt=0;
+            var obj=[
+                    'big01.jpg'
+                    ,'big02.jpg'
+                    ,'big03.jpg'
+                    ,'big04.jpg'
+                    ,'big05.jpg'
+                    ];
+            window.onload=function(){
+//                $('#banner>img').attr('src','imgs/'+obj[cnt]);
+                $('#banner').html('<img src="imgs/'+obj[cnt]+'" />');
+                window.setInterval(loopImg,1000);
+            };
+
+            function loopImg(){
+                if(cnt<obj.length-1)cnt++;
+                else cnt=0;
+//                $('#banner>img').attr('src','imgs/'+obj[cnt])
+                $('#banner').html('<img src="imgs/'+obj[cnt]+'" />');
+            }
+
+        </script>
+	</head>
+
+	<body>
+        <div id="content">
+
+            <div id="banner">
+                <img src="#" alt="img"/>
+            </div>
+
+        </div>
+	</body>
+</html>

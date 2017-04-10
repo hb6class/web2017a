@@ -1,0 +1,59 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            .col1{
+                background-color: red;
+            }
+            .col2{
+                color: yellow;
+            }
+
+            #addid{
+                border-color: violet;
+                border-style: dashed;
+                border-width: 2px;
+            }
+
+        </style>
+        <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+        <script type="text/javascript">
+
+            window.onload=function(){
+
+                var ul=$('#content').children(':first').next();
+
+                //ul.children(':first').addClass('col1').children(':first').addClass('col2').parent().next().next().addClass('col1').children(':first').toggleClass('col2').toggleClass('col2').toggleClass('col2');
+
+//                ul.children(':first').attr('id','addid').children(':first').attr('href','http://naver.com');
+
+//                alert(ul.children(':eq(1)').children(':first').attr('class'));
+
+                $('li').each(function(){
+                    var url=$(this).children(':first').attr('href');
+                    alert(url);
+                });
+
+            };
+
+        </script>
+	</head>
+
+	<body>
+        <div id="content">
+           <h1>목차</h1>
+            <ul>
+                <li><a href="ex01.html">서론</a></li>
+                <li><a href="ex02.html">내용1</a></li>
+                <li><a href="ex03.html">내용2</a></li>
+                <li><a href="ex04.html">내용3</a></li>
+                <li><a href="ex05.html">본론</a></li>
+            </ul>
+
+        </div>
+	</body>
+</html>
