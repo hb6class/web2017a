@@ -1,0 +1,121 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            #content>h1{
+                text-align: center;
+                width: 400px;
+                margin: 0px auto;
+                border-bottom-color: gray;
+                border-bottom-width: 3px;
+                border-bottom-style: solid;
+            }
+            #content>form{
+                width: 400px;
+                margin: 0px auto;
+            }
+            #content>form>p{
+                margin: 20px 0px;
+            }
+            #content>form>p>label{
+                width: 100px;
+                display: inline-block;
+            }
+            #content>form>p:last-child{
+                text-align: center;
+            }
+            #content>form>p>button{
+                width: 60px;
+                height: 40px;
+            }
+        </style>
+        <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+        <script type="text/javascript" >
+        var chk = new Array();
+$(document).ready(function(){
+    $('#content>form').submit(function(){
+        $('input').each(function(idx){
+            if($(this).val()==''){
+                if(idx>5){
+                chk.push($(this).attr('checked'));
+                }else if(idx==4){
+                $(this).parent().append('<span>빈값<span>');
+                }else{
+                $(this).after('<span>빈값<span>');
+                }
+            }else if(idx==2){
+                if($(this).val()!=$('input:eq(1)').val()){
+                    $(this).after('<span>같지않음<span>');
+                }
+            }
+
+
+        });
+        var hobby="<span>하나이상 선택</span>";
+        for(var i=0; i<chk.length; i++){
+            if(chk.pop()=='on')hobby='<span></span>';
+        }
+        $('p:eq(6)').append(hobby);
+
+        return false;
+    });
+});
+        </script>
+	</head>
+
+	<body>
+        <div id="content">
+            <h1>회원가입</h1>
+            <form action="ex01.html">
+            <p>
+            <label for="id">id</label>
+            <input type="text" name="id" id="id">
+            </p>
+            <p>
+            <label for="pw">pw</label>
+            <input type="text" name="pw" id="pw">
+            </p>
+            <p>
+            <label for="re">제입력</label><input type="text" id="re"></p>
+            <p>
+            <label for="name">이름</label><input type="text" name="name" id="name">
+            </p>
+            <p>
+            <label>주민번호</label>
+            <input type="text" name="jumin1" size="6">
+            <input type="text" name="jumin2" size="7">
+            </p>
+            <p>
+            <label for="edu">최종학력</label>
+            <select name="edu" id="edu">
+                <option value="1">고졸</option>
+                <option value="2">전문졸</option>
+                <option value="3">학사졸</option>
+                <option value="4">대학원졸</option>
+            </select>
+            </p>
+            <p>
+                <label>취미</label>
+                <input type="checkbox" name="hobby" value="hb1"/>축구
+                <input type="checkbox" name="hobby" value="hb2"/>야구
+                <input type="checkbox" name="hobby" value="hb3"/>농구
+            </p>
+            <p>
+            <button type="submit">가입</button>
+            <button type="reset">취소</button>
+            </p>
+            </form>
+        </div>
+
+
+        </div>
+	</body>
+</html>
