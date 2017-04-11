@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            #field{
+                width: 50px;
+                height: 50px;
+                /*background-color: antiquewhite;*/
+                position: absolute;
+                background-image: url(imgs/ball.png);
+                background-size: 100%;
+            }
+            #goal{
+                width: 200px;
+                height: 80px;
+                margin: 0px 200px;
+                background-color: cornsilk;
+            }
+        </style>
+        <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+        <script type="text/javascript">
+        var cnt=0;
+        $(document).ready(function(){
+//            $('#field').mousemove(function(event){
+//                console.log(event.pageX+":"+event.pageY);
+//            });
+//            $(document).mouseout(function(event){
+//                $('#field').css('top',event.pageY-25).css('left',event.pageX-25);
+//                if(event.pageX>225&&event.pageX<400-25&&event.pageY<80-25){
+//                    cnt++;
+//                  console.log("점수:"+cnt);
+//                }
+//            });
+            $(document).keypress(function(event){
+                var ball_x=$('#field').css('left');
+                var ball_y=$('#field').css('top');
+                ball_x=parseInt(ball_x);
+                ball_y=parseInt(ball_y);
+
+                if(event.keyCode==97){
+                    $('#field').css('left',ball_x-10);
+                }else if(event.keyCode==100){
+                    $('#field').css('left',ball_x+10);
+                }else if(event.keyCode==119){
+                    $('#field').css('top',ball_y-10);
+                }else if(event.keyCode==115){
+                    $('#field').css('top',ball_y+10);
+                }
+            });
+        });
+        </script>
+	</head>
+
+	<body>
+	<div id="content">
+
+	    <div id="field"></div>
+	    <div id="goal"></div>
+	</div>
+
+	</body>
+</html>
