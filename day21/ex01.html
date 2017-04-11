@@ -1,0 +1,83 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            #field{
+                width: 600px;
+            }
+        </style>
+		<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+		<script type="text/javascript" >
+
+//            window.onload
+$(document).ready(function(){
+    $('button:eq(0), button:eq(1)').click(function(){
+       var fsize=$(this).nextAll('div').css('font-size');
+        fsize=parseInt(fsize);
+        if($(this).text()=='size up')fsize++;
+        else fsize--;
+        $(this).nextAll('div').css('font-size',fsize);
+
+    }).addClass('fsize');
+
+    $('button').not('.fsize').each(function(idx){
+        $(this).click(function(){
+            var w;
+            if(idx==0){
+                w=400;
+            }else{
+                w=800;
+            }
+            $(this).nextAll('div').css('width',w);
+        });
+    });
+
+    $('#field').mouseover(function(){
+        var msg='rgb(255,0,0)';
+        colorChg(this,msg);
+    }).mouseleave(function(){
+        var msg='rgb(0,0,0)';
+        colorChg(this,msg);
+    });
+
+});
+
+function colorChg(a,b){
+        $(a).css('color',b);
+}
+
+        </script>
+	</head>
+
+	<body>
+        <h1>제목</h1>
+        <div>
+            <button>size up</button>
+            <button>size down</button>
+            <button>400*360</button>
+            <button>800*600</button>
+
+            <div id="field">
+                Contributing
+
+Contributions are accepted either through GitHub pull requests or patches via the Selenium issue tracker. You must sign our Contributor License Agreement before your changes will be accepted.
+
+Node Support Policy
+
+Each version of selenium-webdriver will support the latest semver-minor version of the LTS and stable Node releases. All semver-major & semver-minor versions between the LTS and stable release will have "best effort" support. Following a Selenium release, any semver-minor Node releases will also have "best effort" support. Releases older than the latest LTS, semver-major releases, and all unstable release branches (e.g. "v.Next") are considered strictly unsupported.
+
+For example, suppose the current LTS and stable releases are v6.9.5 and v7.5.0, respectively. Then a Selenium release would have the following support levels:
+
+            </div>
+        </div>
+
+	</body>
+</html>
