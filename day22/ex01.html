@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html>
+	<head>
+		<title>Page Title</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1.0">
+		<style>
+            *{
+                margin: 0px;
+                padding: 0px;
+            }
+            #area{
+                width: 600px;
+                height: 500px;
+                background-color: beige;
+            }
+            #box{
+                width: 50px;
+                height: 50px;
+                background-color: red;
+                position: absolute;
+            }
+
+        </style>
+        <script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+        <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+        <script type="text/javascript">
+
+            var func =function(){
+            alert('animate end');
+        };
+$(document).ready(function(){
+    $('#box').draggable();
+    var h= $('#box').css('top');
+    $('#content>button').first().click(function(){
+        //1. linear(일정), 2. swing(부드럽게) , 3.defalut
+        //ui-> easeOutBounce, easeInQuart, easeOutQuart
+        $('#box').animate({'left':'400px'},5000,"easeOutBounce",func);
+//        $('#box').animate({'height':'toggle'},5000);
+
+//                $('#box').animate({'left':'200px'},1000).animate({'top':'200px'},1000).animate({'left':'0px'},1000).animate({'top':h},1000);
+//        $('#box').animate({'left':'400px'},3000).delay(5000).animate({'top':'300px'},2000).animate({'width':'100px','height':'100px'},1000).animate({'left':'0px'}).animate({'height':'hide'}).animate({'height':'show'}).animate({'height':'toggle'}).animate({'height':'toggle'}).animate({'height':'toggle'}).animate({'height':'toggle'});
+    }).next().click(function(){
+//       $('#box').clearQueue();
+       $('#box').stop(true);
+    });
+});
+
+        </script>
+	</head>
+
+	<body>
+        <div id="content">
+           <h1>애니메이션</h1>
+           <button>start</button>
+           <button>stop</button>
+            <div id="area">
+                <div id="box"></div>
+            </div>
+        </div>
+	</body>
+</html>
