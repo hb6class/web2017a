@@ -28,7 +28,7 @@
 		<%for(Guest01Dto bean : list){ %>
 		<tr>
 			<td><%=bean.getSabun() %></td>
-			<td><%=bean.getName() %></td>
+			<td><a href="detail.hb?sabun=<%=bean.getSabun() %>"><%=bean.getName() %></a></td>
 			<td><%=bean.getNalja() %></td>
 			<td><%=bean.getPay() %></td>
 		</tr>
