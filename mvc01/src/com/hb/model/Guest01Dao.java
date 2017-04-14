@@ -44,4 +44,35 @@ public class Guest01Dao {
 		
 		return list;
 	}
+	
+	public void insertOne(int sabun,String name,int pay) {
+		String sql="INSERT INTO GUEST01 (SABUN,NAME,NALJA,PAY) ";
+		sql+=" VALUES (?,?,SYSDATE,?)";
+		try{
+			conn=MyOracle.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, sabun);
+			pstmt.setString(2, name);
+			pstmt.setInt(3, pay);
+			pstmt.executeUpdate();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			try {
+				if(pstmt!=null)pstmt.close();
+				if(conn!=null)conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 }
+
+
+
+
+
+
+
+
+

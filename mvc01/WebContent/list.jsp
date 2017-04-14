@@ -34,6 +34,7 @@
 		</tr>
 		<%} %>		
 	</table>
+	<p><a href="add.hb">add</a></p>
 </body>
 </html>
 
