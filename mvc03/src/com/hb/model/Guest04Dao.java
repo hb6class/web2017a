@@ -68,4 +68,34 @@ public class Guest04Dao {
 		if(pstmt!=null)pstmt.close();
 		if(conn!=null)conn.close();
 	}
+
+	public int insertOne(String name, String sub, int pay) throws SQLException, ClassNotFoundException {
+		String sql="INSERT INTO GUEST04 VALUES (";
+		sql+="GUEST04_SEQ.NEXTVAL,?,?,SYSDATE,?)";
+		int result=0;
+		try{
+			conn=MyDB.getConnection(driver,url,user,password);
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, sub);
+			pstmt.setInt(3, pay);
+			result=pstmt.executeUpdate();
+		}finally{
+			closeAll();
+		}
+		return result;
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

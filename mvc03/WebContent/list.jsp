@@ -13,22 +13,26 @@
 	<style>
 		
 	</style>
+	<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+	
+	$(document).ready(function() {
+		
+		$('#content button').click(function() {
+			window.location.replace("add.hb");
+		});
+	});
+	
+	</script>
+	
 </head>
 <%
 	List<Guest04DTO> list=(List)request.getAttribute("alist");
 %>
 <body>
-	<div id="header">
-		<h1>한빛교육센터</h1>
-	</div>
-	<div id="menu">
-		<ul>
-			<li><a href="#">menu1</a></li>
-			<li><a href="#">menu2</a></li>
-			<li><a href="#">menu3</a></li>
-			<li><a href="#">menu4</a></li>
-		</ul>
-	</div>
+	<%@ include file="template/header.jspf" %>
+	<%@ include file="template/menu.jspf" %>
+	
 	<div id="content">
 		<h1>목록</h1>
 		<div id="table">
@@ -53,10 +57,12 @@
 			<%} %>
 			<!-- 리스트 종료 -->
 		</div>
+		
+		<p>
+			<button>입력</button>
+		</p>
 	</div>
-	<div id="footer">
-		<p>Copyright (c) 2017 한빛교육센터 All rights reserved.</p>
-	</div>
+	<%@ include file="template/footer.jspf" %>
 </body>
 </html>
 
