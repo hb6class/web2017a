@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
+
 public class Guest04DaoTest {
 	Logger log = Logger.getLogger("com.hb.model.Guest04DaoTest");
 

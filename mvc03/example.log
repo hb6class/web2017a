@@ -1,1 +1,16 @@
 FATAL main com.hb.model.Guest04DaoTest - 항상 메시지
+DEBUG main com.hb.model.Guest04DaoTest - 개발 메시지
+INFO main com.hb.model.Guest04DaoTest - 정보 메시지
+WARN main com.hb.model.Guest04DaoTest - 주의 메시지
+ERROR main com.hb.model.Guest04DaoTest - 에러 메시지
+FATAL main com.hb.model.Guest04DaoTest - 항상 메시지
+DEBUG main com.hb.model.Guest04DaoTest - 개발 메시지
+INFO main com.hb.model.Guest04DaoTest - 정보 메시지
+WARN main com.hb.model.Guest04DaoTest - 주의 메시지
+ERROR main com.hb.model.Guest04DaoTest - 에러 메시지
+FATAL main com.hb.model.Guest04DaoTest - 항상 메시지
+DEBUG 2017-04-17 12:45:05,944 com.hb.model.Guest04DaoTest.testSelectAll(Guest04DaoTest.java:21) - 개발 메시지
+INFO  2017-04-17 12:45:05,944 com.hb.model.Guest04DaoTest.testSelectAll(Guest04DaoTest.java:22) - 정보 메시지
+WARN  2017-04-17 12:45:05,944 com.hb.model.Guest04DaoTest.testSelectAll(Guest04DaoTest.java:23) - 주의 메시지
+ERROR 2017-04-17 12:45:05,944 com.hb.model.Guest04DaoTest.testSelectAll(Guest04DaoTest.java:24) - 에러 메시지
+FATAL 2017-04-17 12:45:05,944 com.hb.model.Guest04DaoTest.testSelectAll(Guest04DaoTest.java:25) - 항상 메시지
