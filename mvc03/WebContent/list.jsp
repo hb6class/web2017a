@@ -45,7 +45,7 @@
 			</div>
 			<!-- 리스트 시작 -->
 			<%for(Guest04DTO bean:list){ %>
-			<a href="#">
+			<a href="detail.hb?sabun=<%=bean.getSabun() %>">
 			<div class="row">
 				<span class="col1"><%=bean.getSabun() %></span>
 				<span class="col2"><%=bean.getName() %></span>

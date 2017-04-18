@@ -25,6 +25,8 @@ public class Guest04Dao {
 	public Guest04Dao() {
 		driver="oracle.jdbc.driver.OracleDriver";
 		url="jdbc:oracle:thin:@127.0.0.1:1521:xe";
+//		driver="com.mysql.jdbc.Driver";
+//		url="jdbc:mysql://localhost:3306/testdb";
 		user="scott";
 		password="tiger";
 	}
@@ -84,6 +86,27 @@ public class Guest04Dao {
 			closeAll();
 		}
 		return result;
+	}
+
+	public Guest04DTO selectOne(int sabun) throws SQLException, ClassNotFoundException {
+		String sql="select * from guest04 where sabun=?";
+		Guest04DTO bean = new Guest04DTO();
+		try{
+		conn=MyDB.getConnection(driver, url, user, password);
+		pstmt=conn.prepareStatement(sql);
+		pstmt.setInt(1, sabun);
+		rs=pstmt.executeQuery();
+		if(rs.next()){
+			bean.setSabun(rs.getInt("sabun"));
+			bean.setName(rs.getString("name"));
+			bean.setSub(rs.getString("sub"));
+			bean.setNalja(rs.getDate("nalja"));
+			bean.setPay(rs.getInt("pay"));
+		}
+		}finally{
+			closeAll();
+		}
+		return bean;
 	}
 }
 
