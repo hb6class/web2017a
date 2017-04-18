@@ -15,6 +15,7 @@
 	<script type="text/javascript">
 	
 	$(document).ready(function() {
+		
 		/*
 		$('form input').eq(1).on('click focus',function(){
 			$(this).val("");

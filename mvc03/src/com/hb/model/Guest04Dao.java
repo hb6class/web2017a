@@ -108,6 +108,23 @@ public class Guest04Dao {
 		}
 		return bean;
 	}
+
+	public int updateOne(int sabun, String name, String sub, int pay) throws SQLException, ClassNotFoundException {
+		String sql="update guest04 set name=?,sub=?,pay=? where sabun=?";
+		int cnt=0;
+		try{
+			conn=MyDB.getConnection(driver, url, user, password);
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			pstmt.setString(2, sub);
+			pstmt.setInt(3, pay);
+			pstmt.setInt(4, sabun);
+			cnt=pstmt.executeUpdate();
+		}finally{
+			closeAll();
+		}
+		return cnt;
+	}
 }
 
 

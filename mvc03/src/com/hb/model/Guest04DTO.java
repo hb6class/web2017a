@@ -67,7 +67,6 @@ public class Guest04DTO {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((nalja == null) ? 0 : nalja.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + pay;
 		result = prime * result + sabun;
@@ -83,11 +82,6 @@ public class Guest04DTO {
 		if (getClass() != obj.getClass())
 			return false;
 		Guest04DTO other = (Guest04DTO) obj;
-		if (nalja == null) {
-			if (other.nalja != null)
-				return false;
-		} else if (!nalja.equals(other.nalja))
-			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -104,6 +98,8 @@ public class Guest04DTO {
 			return false;
 		return true;
 	}
+	
+	
 	
 //	@Override
 //	public boolean equals(Object obj) {
