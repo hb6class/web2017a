@@ -8,27 +8,36 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" type="text/css" href="../css/frame.css"/>
 	<style>
-		#content>form{
-			width: 300px;
-			margin: 50px auto;
-			border: 1px solid gray;
-		}
-		#content>form>div{
-			text-align: center;
-		}
-		#content>form>div>label{
-			width: 50px;
-			display: inline-block;
-			text-align: right;
-		}
+	#idchk{
+		color: red;
+	}
 	</style>
 	<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
+	//{chk:[{result:true}]}
 	$(document).ready(function() {
-		$('button[type="button"]').click(function() {
-			window.location.replace('join.hb');
+		$('#id').on("focusout",function(){
+			var val=$('#id').val();
+			$.ajax({
+				'url':'idchk.hb',
+				'method ':'get',
+				'data':{'id':val},
+				'dataType':'json',
+				'error':function(jqXHR, textStatus){
+					alert(textStatus);
+				},
+				'success':function(data){
+					if(!data.chk[0].result){
+						$('#idchk').text('사용불가:중복된 아이디');
+					}else{
+						$('#idchk').text('사용가능');
+					}
+					
+				}
+			});
 		});
 	});
+	
 	
 	</script>
 </head>
@@ -36,30 +45,27 @@
 	<%@ include file="../template/header.jspf" %>
 	<%@ include file="../template/menu.jspf" %>
 	<div id="content">
-		<h1>로그인 페이지</h1>
-		<form action="result.hb" method="post">
+		<h1>회원가입</h1>
+		<form action="member.hb" method="post">
 		<div>
 			<label for="id">id</label>
 			<input type="text" name="id" id="id" />
+			<span id="idchk"></span>
 		</div>
 		<div>
 			<label for="pw">pw</label>
 			<input type="text" name="pw" id="pw" />
 		</div>
 		<div>
-			<button type="submit">로그인</button>
-			<button type="button">회원가입</button>
+			<label for="email">email</label>
+			<input type="text" name="email" id="email" />
+		</div>
+		<div>
+			<button type="submit">회원가입</button>
+			<button type="button">뒤로</button>
 		</div>
 		</form>
 	</div>
 	<%@ include file="../template/footer.jspf" %>
 </body>
 </html>
-
-
-
-
-
-
-
-

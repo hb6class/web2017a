@@ -33,7 +33,8 @@
 		</div>
 		<div>
 			<label for="user">글쓴이</label>
-			<input type="text" name="user" id="user"/>
+			<span><%=request.getAttribute("user")%></span>
+			<input type="hidden" value="<%=request.getAttribute("user")%>" name="user" id="user" />
 		</div>
 		<div>
 			<textarea name="cntnt" rows="15" cols="40"></textarea>

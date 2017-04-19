@@ -37,4 +37,22 @@ public class UserDao {
 		return cnt;
 	}
 
+	public boolean checkId(String id) throws SQLException {
+		boolean result=false;
+		String sql="select count(*) from guest05_user where id=?";
+		try{
+		pstmt=conn.prepareStatement(sql);
+		pstmt.setString(1, id);
+		rs=pstmt.executeQuery();
+		if(rs.next()){
+			if(rs.getInt(1)>0)result=true;
+		}
+		}finally{
+			if(rs!=null)rs.close();
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+		return result;
+	}
+
 }
