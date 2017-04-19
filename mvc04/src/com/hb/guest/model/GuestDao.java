@@ -66,6 +66,21 @@ public class GuestDao {
 		if(pstmt!=null)pstmt.close();
 		if(conn!=null)conn.close();
 	}
+	public int insertOne(String sub, String user, String cntnt) throws SQLException {
+		int result=0;
+		String sql="insert into guest05 (sub,id,cntnt) ";
+		sql+="values (?,?,?)";
+		try{
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, sub);
+			pstmt.setString(2, user);
+			pstmt.setString(3, cntnt);
+			result=pstmt.executeUpdate();
+		}finally{
+			closeAll();
+		}
+		return result;
+	}
 	
 	
 

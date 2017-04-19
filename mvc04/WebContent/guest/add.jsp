@@ -1,5 +1,3 @@
-<%@page import="com.hb.guest.model.GuestDto"%>
-<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,40 +8,42 @@
 	<title>Insert title here</title>
 	<link rel="stylesheet" type="text/css" href="../css/frame.css"/>
 	<style>
-		#content>table{
-			margin: 40px auto;
+		form{
 			width: 80%;
+			margin: 30px auto;
 			border: 1px solid gray;
+		}
+		form>div{
+			margin: 20px 0px;
+			border-bottom-style: dashed;
+			border-bottom-color: gray;
+			border-bottom-width: 1px;
 		}
 	</style>
 </head>
-<%
-	List<GuestDto> list=(List<GuestDto>)request.getAttribute("alist");
-%>
 <body>
 	<%@ include file="../template/header.jspf" %>
 	<%@ include file="../template/menu.jspf" %>
 	<div id="content">
-		<h1>목록</h1>
-		<table>
-		<tr>
-			<th>글번호</th>
-			<th>제목</th>
-			<th>글쓴이</th>
-			<th>조회수</th>
-		</tr>
-		<%for(GuestDto bean:list){ %>
-		<tr>
-			<td><%=bean.getIdx() %></td>
-			<td><%=bean.getSub() %></td>
-			<td><%=bean.getId() %></td>
-			<td><%=bean.getCnt() %></td>
-		</tr>		
-		<%} %>
-		</table>
-		<p>
-			<a href="add.hb">입력</a>
-		</p>
+		<h1>입력페이지</h1>
+		<form action="insert.hb" method="post">
+		<div>
+			<label for="sub">제목</label>
+			<input type="text" name="sub" id="sub"/>
+		</div>
+		<div>
+			<label for="user">글쓴이</label>
+			<input type="text" name="user" id="user"/>
+		</div>
+		<div>
+			<textarea name="cntnt" rows="15" cols="40"></textarea>
+		</div>
+		<div>
+			<button type="submit">글쓰기</button>
+			<button type="reset">취소</button>
+		</div>
+		</form>
+		
 	</div>
 	<%@ include file="../template/footer.jspf" %>
 </body>
