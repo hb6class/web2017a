@@ -55,4 +55,34 @@ public class UserDao {
 		return result;
 	}
 
+	public int insertOne(String id, String pw, String email) throws SQLException {
+		int result=0;
+		String sql="insert into guest05_user values (?,?,?)";
+		try{
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			pstmt.setString(2, pw);
+			pstmt.setString(3, email);
+			result=pstmt.executeUpdate();
+		}finally{
+			if(pstmt!=null)pstmt.close();
+			if(conn!=null)conn.close();
+		}
+		return result;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+

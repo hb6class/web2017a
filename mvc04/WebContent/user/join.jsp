@@ -11,13 +11,25 @@
 	#idchk{
 		color: red;
 	}
+	input{
+		border: 2px solid gray;
+	}
 	</style>
 	<script type="text/javascript" src="../js/jquery-1.12.4.js"></script>
 	<script type="text/javascript">
 	//{chk:[{result:true}]}
+	var nxt=true;
 	$(document).ready(function() {
-		$('#id').on("focusout",function(){
+		$('form').on('submit',function(){
+			$('form input').each(function() {
+				if($(this).val()=='')return false;
+			});
+		if(nxt)return false;
+		});
+		
+		$('#id').on("keyup",function(){
 			var val=$('#id').val();
+			if(val.trim()!=''){
 			$.ajax({
 				'url':'idchk.hb',
 				'method ':'get',
@@ -27,14 +39,19 @@
 					alert(textStatus);
 				},
 				'success':function(data){
-					if(!data.chk[0].result){
+					if(data.chk[0].result){
+						nxt=true;
 						$('#idchk').text('사용불가:중복된 아이디');
+						$('#id').css('border','2px solid red');
 					}else{
+						nxt=false;
 						$('#idchk').text('사용가능');
+						$('#id').css('border','2px solid gray');
 					}
 					
 				}
 			});
+			}
 		});
 	});
 	
