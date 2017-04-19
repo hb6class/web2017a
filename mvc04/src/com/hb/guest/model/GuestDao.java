@@ -41,7 +41,7 @@ public class GuestDao {
 	}
 	public List<GuestDto> selectAll() throws SQLException {
 		List<GuestDto> list=new ArrayList<GuestDto>();
-		String sql="SELECT IDX,ID,SUB,CNT FROM GUEST05";
+		String sql="SELECT IDX,ID,SUB,CNT FROM GUEST05 where tf=0";
 		try{
 		pstmt=conn.prepareStatement(sql);
 		rs=pstmt.executeQuery();
@@ -80,6 +80,61 @@ public class GuestDao {
 			closeAll();
 		}
 		return result;
+	}
+	public GuestDto selectOne(int idx) throws SQLException {
+		GuestDto bean = new GuestDto();
+		String sql="select * from guest05 where idx=?";
+
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, idx);
+			rs=pstmt.executeQuery();
+			if(rs.next()){
+				bean.setIdx(rs.getInt("idx"));
+				bean.setId(rs.getString("id"));
+				bean.setSub(rs.getString("sub"));
+				bean.setCntnt(rs.getString("cntnt"));
+				bean.setNalja(rs.getTimestamp("nalja"));
+				bean.setCnt(rs.getInt("cnt"));
+			}
+		return bean;
+	}
+	public void updateCnt(int idx, int cnt) throws SQLException {
+		String sql="update guest05 set cnt=? where idx=?";
+
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, cnt);
+			pstmt.setInt(2, idx);
+			pstmt.executeUpdate();
+
+	}
+	
+	public GuestDto detailOne(int idx) throws SQLException {
+		GuestDto bean=null;
+		conn.setAutoCommit(false);
+		try{
+			bean=selectOne(idx);
+			bean.setCnt(bean.getCnt()+1);
+			updateCnt(idx,bean.getCnt());
+			conn.commit();
+		}catch(SQLException e){
+			conn.rollback();
+			throw e;
+		}finally{
+			conn.setAutoCommit(true);
+			closeAll();
+		}
+		return bean;
+	}
+	public void deleteOne(int idx) throws SQLException {
+		String sql ="update guest05 set tf=? where idx=?";
+		try{
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, 1);
+			pstmt.setInt(2, idx);
+			pstmt.executeUpdate();
+		}finally{
+			closeAll();
+		}
 	}
 	
 	

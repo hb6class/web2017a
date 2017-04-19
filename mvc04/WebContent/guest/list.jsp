@@ -35,7 +35,7 @@
 		<%for(GuestDto bean:list){ %>
 		<tr>
 			<td><%=bean.getIdx() %></td>
-			<td><%=bean.getSub() %></td>
+			<td><a href="detail.hb?idx=<%=bean.getIdx() %>"><%=bean.getSub() %></a></td>
 			<td><%=bean.getId() %></td>
 			<td><%=bean.getCnt() %></td>
 		</tr>		
